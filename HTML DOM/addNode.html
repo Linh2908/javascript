@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">
+        <p id="p1">Doan van thu 1</p>
+        <p id="p2">Doan van thu 2</p>
+    </div>
+    <script>
+        const p3 = document.createElement('p');
+        p3.innerHTML = 'doan van thu 3';
+        const divElement = document.querySelector('div');
+        divElement.appendChild(p3);
+        // them vao sau phan tu co truoc
+        var p4 = document.createElement('p4');
+        p4.innerHTML = 'Doan van thu 4';
+        var p1Element = document.querySelector('#p1');
+
+        divElement.insertBefore(p4,p1Element);
+    </script>
+</body>
+</html>

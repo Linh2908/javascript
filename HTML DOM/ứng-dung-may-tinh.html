@@ -5,18 +5,97 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            width: 60%;
+            margin:10px auto 0;
+        }
+        h1{
+            font-size: 45px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        form,.container>div {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            width: 49%;
+            height: 30px;
+            font-size: 20px;
+        }
+        button {
+            width: 24%;
+            font-size: 20px;
+            padding: 6px;
+            border-radius: 5px;
+        }
+        p{
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
-    <form action="#">
-        <input type="text" > <input type="text">
-    </form>
-    <button onclick="myfunction()">+</button>
-    <button onclick="myfunction1()">-</button>
-    <p id="" ></p>
+    <div class="container">
+        <h1>caculator</h1>
+        <form action="#">
+            <input type="text" > <input type="text">
+        </form>
+        <div>
+            <button onclick="myfunction()">Addition(+)</button>
+            <button onclick="myfunction1()">Subtration(-)</button>
+            <button onclick="myfunction2()">Multiplacation(*)</button>
+            <button onclick="myfunction3()">Division(/)</button>
+        </div>
+        <p id="" ></p>
+    </div>
     <script>
         var operator ;
         function myfunction() {
-            12+23
+            var firstNumber = Number(document.querySelector('input').value);
+            var secondNumber = Number(document.querySelector('input:last-child').value);
+            if(!isNaN(firstNumber) && !isNaN(firstNumber))
+            var result=(firstNumber) + (secondNumber);
+            else{
+                result='Nhap sai!!!';
+            }
+            document.querySelector('p').innerHTML=`Result Addition :${result}`;
+        }
+        function myfunction1() {
+            var firstNumber = Number(document.querySelector('input').value);
+            var secondNumber = Number(document.querySelector('input:last-child').value);
+            if(!isNaN(firstNumber) && !isNaN(firstNumber))
+            var result=(firstNumber) - (secondNumber);
+            else{
+                result='Nhap sai!!!';
+            }
+            document.querySelector('p').innerHTML=`Result Saptrition :${result}`;
+        }
+        function myfunction2() {
+            var firstNumber = Number(document.querySelector('input').value);
+            var secondNumber = Number(document.querySelector('input:last-child').value);
+            if(!isNaN(firstNumber) && !isNaN(firstNumber))
+            var result=(firstNumber) * (secondNumber);
+            else{
+                result='Nhap sai!!!';
+            }
+            document.querySelector('p').innerHTML=`Result Multiplacation :${result}`;
+        }
+        function myfunction3() {
+            var firstNumber = Number(document.querySelector('input').value);
+            var secondNumber = Number(document.querySelector('input:last-child').value);
+            if(!isNaN(firstNumber) && !isNaN(firstNumber))
+            var result=(firstNumber) / (secondNumber);
+            else{
+                result='Nhap sai!!!';
+            }
+            document.querySelector('p').innerHTML=`Result Division :${result}`;
         }
     //     var addition = document.querySelector('button');
     //    addition.addEventListener('click',toanTu);
