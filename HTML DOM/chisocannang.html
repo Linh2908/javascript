@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var weight = Number(prompt('nhan can nang nha (kg)'));
+        var height = Number(prompt('chieu cao cua ban la(m)'));
+        if(isNaN(weight)|| isNaN(height)){
+            alert('ban nhap sai roi a!! Day khong phai so');
+        }else{
+            let BMI = weight/(height*height);
+           if(BMI<16){
+               alert(`ban qua gay roi do. BMI = ${BMI}`);
+           }else if(BMI <17){
+               alert(`gay cap do 2. BMI ${BMI}`);
+           }else if(BMI < 18.5){
+               alert(`ban hoi gay.${BMI}`)
+           }else if(BMI <22.5){
+               alert(`ok. ${BMI}`);
+           }else if(BMI<30){
+            alert(`hoi nhieu mo. ${BMI}`);
+           }else if(BMI<35){
+            alert(`bao phi 1. ${BMI}`);
+           }else if(BMI<40){
+            alert(`bao phi 2. ${BMI}`);
+           }else{
+            alert(`Nen han che an lai. ${BMI}`);
+           }
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container{
+            width: 600px;
+            margin: 20px auto;
+        }
+        .box {
+            display: flex;
+            justify-content: space-between;
+            width: 200px;
+            margin: 10px 0;
+        }
+        button {
+            width: 200px;
+            background: #ce1414;
+            padding: 6px;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tinh Diem dai hoc khoi D</h1>
+        <form action="">
+            <div class="box">
+                <label for="">Diem Toan</label>
+                <input type="text" id="math">
+            </div>
+            <div class="box">
+                <label for="">Diem Van</label>
+                <input type="text" id="literary">
+            </div>
+            <div class="box">
+                <label for="">Diem Anh</label>
+                <input type="text" id="english">
+            </div>
+        </form>
+        <div class="box">
+            <h4>Khu vuc</h4>
+            <select name="Khu Vuc" id="check" >
+                <option value="1">KV3</option>
+                <option value="2">KV2</option>
+                <option value="3">KV2N</option>
+                <option value="4">KV1</option>
+            </select>
+        </div>
+        <button type="button">Result</button>
+        <h1 id="result"></h1>
+    </div>
+    <script>
+        document.querySelector('button').onclick = function(){
+            let Math1 = Number(document.querySelector('#math').value);
+            let Literary = Number(document.querySelector('#literary').value);
+            let English = Number(document.querySelector('#english').value);
+            let country = document.querySelector('#check').value;
+            if(isNaN(Math1)|| isNaN(Literary)||isNaN(English)){
+                document.querySelector('#result').innerText = `Ban nhap sai roi`;
+            }else{
+                switch(country){
+                    case '1':{
+                        document.querySelector('#result').innerText = `Tong diem : ${Math1 + Literary + English + 0.75}`;
+                        break;
+                    }
+                    case '2':{
+                        document.querySelector('#result').innerText = `Tong diem : ${Math1 + Literary + English + 0.5}`;
+                        break;
+                    }
+                    case '3':{
+                        document.querySelector('#result').innerText = `Tong diem : ${Math1 + Literary + English+ 0.25}`;
+                        break;
+                    }
+                    default :{
+                        document.querySelector('#result').innerText = `Tong diem : ${Math1 + Literary + English}`;
+                    }
+                }
+            }  
+        }
+    </script>
+</body>
+</html>

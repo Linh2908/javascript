@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 300px;
+            margin: 20px auto;
+        }
+        input {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="#">
+            <div class="box1">
+                <label for=""> Nhap thang:</label> <br>
+                <input type="text" id="month">
+            </div>
+            <div class="box2">
+                <label for="">Nhap nam</label> <br>
+                <input type="text" id="year">
+            </div>
+            <button>check</button>
+        </form>
+        <h1></h1>
+    </div>
+    <script>
+        
+        document.querySelector('button').onclick= function(){
+            let month = Number(document.querySelector('#month').value);
+            let year = Number(document.querySelector('#year').value);
+            var h1Element = document.querySelector('h1');
+            if(isNaN(month)||isNaN(year)){
+            h1Element.innerText = 'ban nhap sai roi a';
+            }else{
+                let days;
+                switch(month){
+                    case 1: case 3: case 5: case 7: case 8: case 10: case 12: days=31; break;
+                    case 4: case 6: case 9: case 11:  days=30; break;
+                    case 2: if(year %400 ==0) {
+                                days =29; break;
+                            }else{
+                                days=28; break;
+                            }
+                    default :{
+                        days =` ban nhap thang sai roi a`;
+                    }
+                }
+                h1Element.innerText =`so ngay cua thang ${days}`;
+
+            }
+        };
+    </script>
+</body>
+</html>

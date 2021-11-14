@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <form action="#">
+            <div class="box1">
+                <label for="">Nhap tien vao day </label> <br>
+                <input type="text" name="check" placeholder="Check number !!! input">
+                <button type="submit"> Check</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.querySelector('button').onclick = function(){
+            let numberNode =Number(document.querySelector('input[type="text"]').value);
+            if(!(isNaN(numberNode))){
+                if(numberNode %2 == 0){
+                    alert('even');
+                }else{
+                    alert('odd');
+                }
+            }else{
+                alert('ban nhan sai roi a');
+            }
+
+        }
+    </script>
+</body>
+</html>

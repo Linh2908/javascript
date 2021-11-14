@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+            border: 2px solid #333;
+            margin: 10px auto 0;
+            position: relative;
+        }
+        img#tank {
+            width: 20px;
+            position: absolute;
+            top: 140px;
+            left: 140px;
+            z-index: 100;
+        }
+        .btnbox {
+            width: 300px;
+            text-align: center;
+            margin: 10px auto;
+        }
+        button{
+            width: 90px;
+        }
+        i.fa.fa-caret-right {
+            font-size: 26px;
+        }
+        button#btn-top>i {
+        transform: rotate(-90deg);
+        }
+        #btn-top{
+            margin-bottom: 5px;
+        }
+        button#btn-left>i {
+            transform: rotate(-180deg);
+        }
+        button#btn-bottom>i {
+        transform: rotate(90deg);
+        }
+        p.item1 {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #c4af16;
+            background: #c4af16;
+            border-radius: 4px;
+            box-shadow: 3px 3px 3px #ccc;
+        }
+        .son1{
+            top:20px;
+            left: 40px;
+        }
+        .son2 {
+            top: 120px;
+            left: 120px;
+        }
+        .son3 {
+            top: 280px;
+            left: 240px;
+        }
+        p.item1.son4 {
+            top: 200px;
+        }
+        p.item1.son5 {
+            left: 280px;
+            top: 40px;
+        }
+        img.item2 {
+            position: absolute;
+            width: 20px;
+            top: 200px;
+            left: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="tank.png" alt="" id="tank">
+        <!-- vat car -->
+        <div class="thing">
+            <p class="item1 son1"></p>
+            <p class="item1 son2"></p>
+            <p class="item1 son3"></p>
+            <p class="item1 son4"></p>
+            <p class="item1 son5"></p>
+        </div>
+        <!-- boom -->
+        <div class="boom">
+            <img src="boom.png" alt="" class="item2">
+        </div>
+    </div>
+    
+
+    <!-- buttons -->
+    <div class="btnbox">
+        <button id='btn-top'><i class="fa fa-caret-right"></i></button>
+        <div class="btn-bt">
+            <button id='btn-left'><i class="fa fa-caret-right"></i></button>
+            <button id='btn-bottom'><i class="fa fa-caret-right"></i></button>
+            <button id='btn-right'><i class="fa fa-caret-right"></i></button>
+        </div>
+    </div>
+    <script>
+        let tank = document.querySelector("#tank");
+        console.log([tank.style]);
+        let x = tank.offsetTop;
+        let y = tank.offsetLeft;
+        let btn = document.querySelectorAll('button');
+        let boom = document.querySelector('.item2');
+        let thing = document.querySelectorAll('.item1');
+            btn[0].onclick = function(){
+                tank.style.transform = 'rotate(0deg)';
+                if(x <= 0){
+                    tank.style.top = `${x-=0}px`;
+                }else if((x === (thing[0].offsetTop +20) && y === thing[0].offsetLeft)||(x === (thing[1].offsetTop+20) && y === thing[1].offsetLeft)
+                ||(x === (thing[2].offsetTop+20) && y === thing[2].offsetLeft)||(x === (thing[3].offsetTop+20) && y === thing[3].offsetLeft)||(x === (thing[4].offsetTop+20) && y === thing[4].offsetLeft)){
+                    tank.style.top = `${x-=0}px`;
+                }else if(x === boom.offsetTop+20&& y === boom.offsetLeft){
+                    tank.src = "explosion.png";
+                    boom.style.display = 'none';
+                }
+                else{
+                    tank.style.top = `${x-=20}px`;
+                }
+            }
+            btn[1].onclick = function(){
+                tank.style.transform = 'rotate(-90deg)';
+                if(y <= 0){
+                    tank.style.left = `${y-=0}px`; 
+                }else if((x === (thing[0].offsetTop) && y === thing[0].offsetLeft+20)||(x === (thing[1].offsetTop) && y === thing[1].offsetLeft+20)
+                ||(x === (thing[2].offsetTop) && y === thing[2].offsetLeft+ 20)||(x === (thing[3].offsetTop) && y === thing[3].offsetLeft+20)||(x === (thing[4].offsetTop) && y === thing[4].offsetLeft+20)){
+                    tank.style.left = `${y-=0}px`;
+                }else if(x === boom.offsetTop&& y === boom.offsetLeft+20){
+                    tank.src = "explosion.png";
+                    boom.style.display = 'none';
+                }
+                else{
+                    tank.style.left = `${y-=20}px`; 
+                }
+            }
+            btn[2].onclick = function(){
+
+                tank.style.transform = 'rotate(-180deg)';
+                if(x >= 270){
+                    tank.style.top = `${x+=0}px`;
+                }else if((x === (thing[0].offsetTop-20) && y === thing[0].offsetLeft)||(x === (thing[1].offsetTop-20) && y === thing[1].offsetLeft)
+                ||(x === (thing[2].offsetTop-20) && y === thing[2].offsetLeft)||(x === (thing[3].offsetTop-20) && y === thing[3].offsetLeft)||(x === (thing[4].offsetTop-20) && y === thing[4].offsetLeft)){
+                    tank.style.top = `${x+=0}px`;
+                }else if(x === boom.offsetTop-20&& y === boom.offsetLeft){
+                    tank.src = "explosion.png";
+                    boom.style.display = 'none';
+                }
+                else{
+                    tank.style.top = `${x+=20}px`;
+                }
+            }
+            btn[3].onclick = function(){
+                tank.style.transform = 'rotate(90deg)';
+                if(y >= 262){
+                    tank.style.left = `${y+=0}px`; 
+                }else if((x === (thing[0].offsetTop) && y === thing[0].offsetLeft-20)||(x === (thing[1].offsetTop) && y === thing[1].offsetLeft-20)
+                ||(x === (thing[2].offsetTop) && y === thing[2].offsetLeft -20)||(x === (thing[3].offsetTop) && y === thing[3].offsetLeft-20)||(x === (thing[4].offsetTop) && y === thing[4].offsetLeft-20)){
+                    tank.style.left = `${y+=0}px`; 
+                }else if(x === boom.offsetTop&& y === boom.offsetLeft-20){
+                    tank.src = "explosion.png";
+                    boom.style.display = 'none';
+                }
+                else{
+                    tank.style.left = `${y+=20}px`; 
+                } 
+            }
+        
+    </script>
+</body>
+</html>
