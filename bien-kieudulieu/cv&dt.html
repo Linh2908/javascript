@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let radius = prompt("Input Radius =",'');
+        let perimeter = Math.PI*2*parseInt(radius);
+        let area = Math.PI*parseInt(radius)*parseInt(radius);
+        let bodyElement = document.querySelector('body');
+        bodyElement.innerHTML = `<h1> chu vi cua duong tron la: ${perimeter} <br> 
+            dien tich cua duong tron la ${area} </h1>`;
+    </script>
+</body>
+</html>

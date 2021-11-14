@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        .container {
+            width: 300px;
+            height: 300px;
+            border: 2px solid #333;
+            margin: 10px auto 0;
+            position: relative;
+        }
+        img#tank {
+            width: 20px;
+            position: absolute;
+            top: 120px;
+            left: 120px;
+        }
+        .btnbox {
+            width: 300px;
+            text-align: center;
+            margin: 10px auto;
+        }
+        button{
+            width: 90px;
+        }
+        i.fa.fa-caret-right {
+            font-size: 26px;
+        }
+        button#btn-top>i {
+        transform: rotate(-90deg);
+        }
+        #btn-top{
+            margin-bottom: 5px;
+        }
+        button#btn-left>i {
+            transform: rotate(-180deg);
+        }
+        button#btn-bottom>i {
+        transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="tank.png" alt="" id="tank">
+    </div>
+    <!-- buttons -->
+    <div class="btnbox">
+        <button id='btn-top'><i class="fa fa-caret-right"></i></button>
+        <div class="btn-bt">
+            <button id='btn-left'><i class="fa fa-caret-right"></i></button>
+            <button id='btn-bottom'><i class="fa fa-caret-right"></i></button>
+            <button id='btn-right'><i class="fa fa-caret-right"></i></button>
+        </div>
+    </div>
+    <script>
+        let tank = document.querySelector("#tank");
+        console.log([tank.style]);
+        let x = tank.offsetTop;
+        let y = tank.offsetLeft;
+        let btn = document.querySelectorAll('button');
+        console.log(btn)
+        btn[0].onclick = function(){
+            tank.style.transform = 'rotate(0deg)';
+            if(x <= 0){
+                tank.style.top = `${x-=0}px`;
+            }else{
+                tank.style.top = `${x-=20}px`;
+            }
+        }
+        btn[1].onclick = function(){
+            tank.style.transform = 'rotate(-90deg)';
+            if(y <= 0){
+                tank.style.left = `${y-=0}px`; 
+            }else{
+                tank.style.left = `${y-=20}px`; 
+            }
+        }
+        btn[2].onclick = function(){
+
+            tank.style.transform = 'rotate(-180deg)';
+            if(x >= 270){
+                tank.style.top = `${x+=0}px`;
+            }else{
+                tank.style.top = `${x+=20}px`;
+            }  
+        }
+        btn[3].onclick = function(){
+            tank.style.transform = 'rotate(90deg)';
+            if(y >= 262){
+                tank.style.left = `${y+=0}px`; 
+            }else{
+                tank.style.left = `${y+=20}px`; 
+            } 
+        }
+    </script>
+</body>
+</html>

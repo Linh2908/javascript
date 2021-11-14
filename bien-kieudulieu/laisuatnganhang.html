@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let money = prompt('so tien ma ban vay','');
+        let profit = prompt('lai suat hang nam','');
+        let years = prompt('so nam ban muon vay','');
+        let sumMoney =parseFloat(money) + parseFloat(money) * parseFloat(profit) * parseFloat(years)/100;
+        let h1Element = document.createElement('h1');
+        h1Element.innerText=`tong so tien phai tra sau ${years} la ${sumMoney}`;
+        let body = document.querySelector('body');
+        document.body.appendChild(h1Element);
+    </script>
+</body>
+</html>
