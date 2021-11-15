@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <button>Start</button>
+        <script>
+            document.querySelector('button').onclick = function(){
+                let random = parseInt(Math.random()*10);
+                let i=0;
+                let num;
+                do{
+                    num = Number(prompt('Nhap 1 so ( 1 -> 10)',''));
+                    i++;
+                }while(num !== random || i<=3);
+               alert('ban da doan dung roi!!');
+                    
+                }
+        </script>
+    </div>
+</body>
+</html>

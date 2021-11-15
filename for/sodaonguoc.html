@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var num = Number(prompt('Nhapp 1 so vao day:'));
+        let numLast =0,dem=-1, temp = num;
+        // alert(`${parseInt(num/=10)}`);
+        if( !isNaN(num)){
+            do{
+                temp=parseInt(temp/10);
+                dem++;
+            }while(temp>0);
+            while(num>0){
+                numLast += (num%10)*Math.pow(10,dem);
+                num = parseInt(num/10);
+                dem --;
+            }
+            alert(`so dao nguoc la :${numLast}`);
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let num = parseInt(prompt('nhap so luong so nguyen to:'));
+        let count = 0, N = 2, check =1, result = '';
+        while(count < num){
+            for(let i=2;i<N;i++){
+                if(N % i ==0){
+                    check = 0; 
+                    break;
+                }
+                check = 1;
+            }
+            if(check === 1){
+                count ++;
+                result += `${N},`;
+            }
+            N++;
+        }
+        document.write(result);
+    </script>
+</body>
+</html>
