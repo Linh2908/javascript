@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 380px;
+            margin: auto;
+            border: 2px solid #000;
+            border-radius: 11px;
+            padding: 20px 10px;
+        }
+        h1 {
+            text-align: center;
+            background: #ef8f18;
+            color: #fff;
+            font-size: 32px;
+            padding: 5px;
+        }
+        label {
+            font-size: 14px;
+            color: blue;
+            margin-right: 10px;
+        }
+        .box {
+            display: flex;
+            justify-content: space-between;
+            width: 300px;
+        }
+        input[type="text"], input[type="email"] {
+            width: 200px;
+        }
+        .box {
+            display: flex;
+            justify-content: right;
+            width: 300px;
+            margin-bottom: 15px;
+        }
+        .box1{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .box1>div {
+            display: grid;
+            grid-template-columns: 100px 100px 100px;
+        }
+        button {
+            width: 187px;
+            margin-top: 10px;
+            font-size: 14px;
+            padding: 7px 8px;
+            border-radius: 4px;
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+         <form action="#">
+            <h1>So thich cua ban</h1>
+            <div class="box">
+                <label for="">Ho Va ten:</label>
+                <input type="text" name="fullname" placeholder="day du ten nha!!!" required>
+            </div>
+            <div class="box">
+                <label for="">Email:</label>
+                <input type="email" name="fullname" >
+            </div>
+            <div class="box1">
+                <label for="">So thich:</label>
+                <div>
+                    <div><input type="checkbox"> The thao</div> 
+                    <div><input type="checkbox"> Am nhac  </div>
+                    <div><input type="checkbox"> Doc sach </div>
+                    <div> <input type="checkbox"> Luot web</div>
+                    <div><input type="checkbox"> Choi game</div>
+                    <div> <input type="checkbox"> Dien anh</div>
+                    <div> <input type="checkbox"> Du lich</div>
+                </div>
+            </div>
+            <button type="submit">Submit</button>
+            <button type="reset">reset</button>
+        </form>
+    </div>
+   
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let aba = [1,4 , 6, 9, 12, 45, 100];
+        document.write(aba);
+        let first = 0;
+        let last = aba.length-1;
+        while(first<last){
+            let temp = aba[first];
+            aba[first] = aba[last];
+            aba[last] = temp;
+            first ++;
+            last --;
+        }
+        document.write('<br>')
+        document.write(aba);
+    </script>
+</body>
+</html>

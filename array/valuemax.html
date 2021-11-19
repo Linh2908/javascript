@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let numbers = [1, 4, 9, 10, 12,'ug'];
+        let max =0;
+        for(let i = 0 ; i<numbers.length ;i++){
+            if(typeof (numbers[i]) == 'number'){
+                max = max<numbers[i]?numbers[i]:max;
+            }
+        }
+        console.log(max);
+    </script>
+</body>
+</html>

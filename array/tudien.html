@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <form action="">
+            <h1>Tu can tim</h1>
+            <input type="text" placeholder="Nhap tu ban muon tim">
+            <button type="button">Search</button>
+        </form>
+        <p id="result"></p>
+    </div>
+    <script>
+        let distionary = [
+            {
+                english : 'hello',
+                vn:'xin chao'
+            },
+            {
+                english : 'math',
+                vn:'mon toan'
+            },
+            {
+                english : 'hospital',
+                vn:'benh vien'
+            }
+        ]
+        function myFunction(distionary) {
+            input = document.querySelector('input[type="text"]').value;
+            let result = '',check =0;
+            for(let i in distionary){
+                if(distionary[i].english == input){
+                    result+=`${distionary[i].english}:${distionary[i].vn}`;
+                    check=1;
+                    break;
+                }
+            }
+            if(check == 0){
+                result+=`tu ${input} khong co trong tu dien`;
+            }
+            return result;
+        };
+        
+        document.querySelector('button').onclick=function(){
+            let result =myFunction(distionary);
+            document.querySelector('#result').innerHTML=result;
+        }
+    </script>
+</body>
+</html>

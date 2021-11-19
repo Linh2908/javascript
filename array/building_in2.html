@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let input = prompt('nhap string :');
+        let toArray = input.split(' ');
+        let string = '';
+        for(let i in toArray){
+            for(let j in toArray[i]){
+               if(j == 0){
+                    string +=`${toArray[i][j].toLowerCase()}`;
+               }else{
+                    string +=`${toArray[i][j].toUpperCase()}`;
+               }
+            }
+            string +=` `;
+        }
+        console.log(string);
+    </script>
+</body>
+</html>
