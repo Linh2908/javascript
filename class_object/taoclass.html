@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Student(id, name, address) {
+            this.id = id;
+            this.name = name;
+            this.address = address;
+            this.myInfo = function() {
+                return `id = ${this.id} name = ${this.name} address = ${this.address}`;
+            }
+        }
+
+        let student = new Student(1,'NTA', 'BG');
+        console.log(student.myInfo());
+
+        // c2
+        function Student1() {
+            this.id = 1;
+            this.name = 'NTa';
+            this.address = 'bg';
+            this.myInfo = function() {
+                return `id = ${this.id} name = ${this.name} address = ${this.address}`;
+            }
+        }
+        let student2 = new Student1();
+        console.log(student2.name);
+    </script>
+</body>
+</html>

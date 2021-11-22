@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let numbers = parseInt(prompt('nhap 1 so '));
+        
+            function isPrime(number){
+                let bodyElement = document.querySelector('body');
+                let temp = '<div>';
+                let check =1;
+                let count = 2;
+                while(count<= number){
+                    for(let i=2;i<count;i++){
+                        if(count % i == 0){
+                            check = 0; break;
+                        }
+                        check = 1;
+                    }
+                    if(check == 1){
+                        temp +=`${count} ,`;
+                    }
+                    count ++;
+                }
+                temp += '</div>';
+                bodyElement.innerHTML=temp;
+            }
+            isPrime(numbers);
+    </script>
+</body>
+</html>

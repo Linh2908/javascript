@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="DemoCanvas" width="400" height="400" style="border:2px solid"></canvas>
+    <canvas id="DemoCanvas1" width="600" height="400" style="border:2px solid"></canvas>
+    <script>
+        let canvas = document.querySelector('#DemoCanvas');
+        if(canvas.getContext){
+            let ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#ccc';
+            ctx.fillRect(20,20,200,200);
+        }
+        // strokeRect() ve hinh chu nhat khong co mau
+        let canvas2 = document.querySelector('#DemoCanvas1');
+        if(canvas2.getContext) {
+            let ctx1 =  canvas2.getContext('2d');
+            ctx1.lineWidth = '25';
+            ctx1.lineJoin = 'round';
+            ctx1.strokeRect(20,20,200,200);
+
+            ctx1.lineWidth = "25";
+            ctx1.lineJoin = "bevel";
+            ctx1.strokeStyle = "blue";
+            ctx1.strokeRect(150, 200, 300, 150);
+
+
+            ctx1.strokeStyle = 'red';
+            ctx1.strokeRect(30,50,200,300);
+        }
+    </script>
+</body>
+</html>

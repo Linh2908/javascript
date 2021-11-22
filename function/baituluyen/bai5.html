@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let num = Number(prompt('Nhap 1 so vao day:'));
+        function getFactorial(number){
+            let Fac =0;
+            if(number == 0){
+              return  Fac =1;
+            }
+            return Fac=number*getFactorial(number-1);
+        }
+        alert(getFactorial(num));
+    </script>
+</body>
+</html>

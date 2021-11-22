@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let ConstellationFrist = [
+            'Polaris',
+            'Aldebaran',
+            'Deneb',
+            'Vega',
+            'Altair',
+            'Dubhe',
+            'Regulus'
+        ];
+        let ConstellationSecond = ['Ursa Minor', 'Tarurus', 'Cygnus', 'Lyra', 'Aquila', 'Ursa Major', 'Leo'];
+        function  findStar (arr){
+            let NameStar = prompt('Nhap ten cua ngoi sao cua ban: ');
+            for(let i=0; i<arr.length; i++)
+            {
+                if(arr[i] == NameStar){
+                    console.log(ConstellationSecond[i]);
+                    break;
+                }
+                console.log('khong co ten ngoi sao ban can tim trong chom sao nay');
+            }
+        }
+        findStar(ConstellationFrist);
+    </script>
+</body>
+</html>

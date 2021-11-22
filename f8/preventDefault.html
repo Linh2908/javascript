@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul{
+            display: none;
+        }
+        input:focus ~ ul{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="https://fullstack.edu.vn/" target="_blank">F8 full stack</a>
+        <a href="https://www.google.com/">Google</a>
+    </div>
+
+    <div class="demo2">
+        <input type="text" placeholder="Tim kiem">
+        <ul>
+            <li>Java</li>
+            <li>PHP</li>
+            <li>JavaScript</li>
+        </ul>
+    </div>
+    <script>
+        let aElement = document.links;
+        for(let i=0;i<aElement.length; i++){
+            aElement[i].onclick = function(e){
+                if(!(e.target.href.startsWith('https://fullstack.edu.vn/'))){
+                    e.preventDefault();
+                }
+            }
+        }
+        let ulElement = document.querySelector('ul');
+        ulElement.onmousedown = function(e){
+            e.preventDefault();
+        }
+        ulElement.onclick = function(e){
+            console.log(e.target);
+        }
+    </script>
+</body>
+</html>

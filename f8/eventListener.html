@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button type="button"> Click</button>
+    <script>
+        let btnElement = document.querySelector('button');
+        
+        // sau 3 s thuc thi
+        // setTimeout(function(){
+        //         btnElement.onclick = function(e){
+        //         console.log('cv1');
+        //         console.log('cv2');
+        //         alert('cv3');
+        //     }
+        // },3000)
+
+
+        //cach su dung event listener
+        function doFirst(){
+            console.log('cv1');
+        }
+        function doSecond(){
+            console.log('cv2');
+        }
+        btnElement.addEventListener('click',doFirst);
+        btnElement.addEventListener('click',doSecond);
+        setTimeout(function(){
+            btnElement.removeEventListener('click',doFirst);
+        },3000);
+    </script>
+</body>
+</html>

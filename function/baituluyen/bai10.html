@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let chatA= ['a','b',1,'a', 'h','gf'];
+        let chat = 'a';
+        function checkChat(arr, k){
+            let dem =0;
+            for(let i in arr){
+                if(arr[i] == k){
+                    dem ++;
+                }
+            }
+            if(dem == 0){
+                alert('khong co ki tu nay trong chuoi');
+            }else{
+                alert(`so luon chu do trong mang la : ${dem}`);
+            }
+        }
+        checkChat(chatA,chat);
+    </script>
+</body>
+</html>

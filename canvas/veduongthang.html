@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="demoCanvas" height="400" width="400"></canvas>
+    <script>
+        let canvas = document.querySelector('#demoCanvas');
+        let ctx =  canvas.getContext("2d");
+        // ctx.beginPath();
+        // ctx.moveTo(10,45);
+        // ctx.lineTo(180,40);
+        // ctx.stroke();
+
+        /* ve nhieu duong ngang doc */
+        // if(canvas.getContext){
+        //     let ctx = canvas.getContext('2d');
+        //     for(let i=10; i<200; i+=20){
+        //         ctx.moveTo(0,i);
+        //         ctx.lineTo(canvas.width,i);
+        //         ctx.stroke();
+        //     }
+        //     for(let i=10; i<400; i+=20){
+        //         ctx.moveTo(i,0);
+        //         ctx.lineTo(i,canvas.width/2);
+        //         ctx.stroke();
+        //     }
+        // }
+
+        /*lineWidth*/
+        // let count = 1;
+        // if(canvas.getContext){
+        //     let ctx = canvas.getContext("2d");
+        //     for(let i=0; i<360;i+=30){
+        //         ctx.beginPath();
+        //         ctx.lineWidth=count;
+        //         ctx.moveTo(0,i);
+        //         ctx.lineTo(canvas.width,i);
+        //         ctx.stroke();
+        //         count ++;
+        //     }
+        // }
+
+        /* strokeStyle */
+        // if (canvas.getContext) 
+        // {
+        // var context = canvas.getContext("2d");
+        // context.beginPath();
+        // context.moveTo(50, 10);
+        // context.lineTo(50, 200);
+        // context.lineWidth = 5;
+        // // set line color
+        // context.strokeStyle = 'red';
+        // context.stroke();
+        // context.beginPath();
+        // context.moveTo(100, 10);
+        // context.lineTo(100, 200);
+        // context.lineWidth = 5;
+        // // set line color
+        // context.strokeStyle = 'green';
+        // context.stroke();
+        // context.beginPath();
+        // context.moveTo(150, 10);
+        // context.lineTo(150, 200);
+        // context.lineWidth = 5;
+        // // set line color
+        // context.strokeStyle = '#2E1919';
+        // context.stroke();
+        // context.stroke();
+        // context.beginPath();
+        // context.moveTo(200, 10);
+        // context.lineTo(200, 200);
+        // context.lineWidth = 5;
+        // // set line color
+        // context.strokeStyle = '#3B4839';
+        // context.stroke();   
+        // }
+
+        /* lineCap dau cua duong thang*/
+        // if (canvas.getContext) 
+        // {
+        //     var context = canvas.getContext("2d");
+        //     // butt line cap (first line)
+        //         context.beginPath();
+        //         context.moveTo(20,20);
+        //         context.lineTo(20,200);
+        //         context.lineWidth = 25;
+        //         context.strokeStyle = '#ff0000';
+        //         context.lineCap = 'butt';
+        //         context.stroke();
+
+        //     // round line cap (second line)
+        //         context.beginPath();
+        //         context.moveTo(80,20);
+        //         context.lineTo(80,200);
+        //         context.lineWidth = 25;
+        //         context.strokeStyle = '#ff0000';
+        //         context.lineCap = 'round';
+        //         context.stroke();
+
+        //     // square line cap (third line)
+        //         context.beginPath();
+        //         context.moveTo(120,20);
+        //         context.lineTo(120,200);
+        //         context.lineWidth = 50;
+        //         context.strokeStyle = '#ff0000';
+        //         context.lineCap = 'square';
+        //         context.stroke();
+        // }
+
+        /*lineJoin goc cua duong thang */
+        if (canvas.getContext) 
+{
+   var ctx = canvas.getContext("2d");
+   var lStart = 50;
+   var lEnd = 200;
+   var yStart = 20;
+   ctx.beginPath();
+   ctx.lineWidth = 25;
+// Use a bevel corner.
+   ctx.lineJoin = "bevel";
+   ctx.moveTo(50, 20);
+   ctx.lineTo(150, 20);
+   ctx.lineTo(150, 120);
+   ctx.stroke();
+// Use a round corner.             
+   ctx.beginPath();
+   ctx.lineJoin = "round";
+   ctx.moveTo(50, 140);
+   ctx.lineTo(150, 140);
+   ctx.lineTo(150, 260);
+   ctx.stroke();
+// Use a miter.      
+   ctx.beginPath();
+   ctx.lineJoin = "miter";
+   ctx.moveTo(50, 280);
+   ctx.lineTo(150, 280);
+   ctx.lineTo(150, 400); 
+   ctx.stroke();
+ }
+    </script>
+</body>
+</html>
