@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .calculator {
+            width: 60%;
+            margin: 10px auto 0;
+            border: 1px solid #000;
+            border-radius: 4px;
+            padding: 10px;
+        }
+        .calculator_display {
+            border: 1px solid #000;
+            padding: 4px 0;
+            font-size: 20px;
+            text-align: right;
+            border-radius: 4px;
+        }
+        .operator {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        button.key-operator {
+            flex-basis: 24%;
+            font-size: 20px;
+            padding: 5px 0;
+            border-radius: 4px;
+        }
+        .number-key {
+            display: flex;
+            align-items: stretch;
+        }
+        .number {
+            flex-basis: 75%;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .number>button {
+            flex-basis: 32%;
+            border-radius: 4px;
+            font-size: 20px;
+            margin-top: 10px;
+            padding: 5px 0;
+        }
+        button.key-operator1 {
+            margin-top: 10px;
+            flex-basis: 24%;
+            margin-left: 8px;
+            border-radius: 4px;
+            font-size: 45px;
+        }
+        .is-depressed{
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="calculator_display">0</div>
+        <div class="calculator_key">
+            <div class="operator">
+                <button class="key-operator" data-action="add">+</button>
+                <button class="key-operator" data-action="subtract">-</button>
+                <button class="key-operator" data-action="multiply">&times;</button>
+                <button class="key-operator" data-action="divide">/</button>
+            </div>
+            <div class="number-key">
+                <div class="number">
+                    <button>7</button>
+                    <button>8</button>
+                    <button>9</button>
+                    <button>4</button>
+                    <button>5</button>
+                    <button>6</button>
+                    <button>1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>0</button>
+                    <button data-action="decimal">.</button>
+                    <button data-action="clear">AC</button>
+                </div>
+                <button class="key-operator1" data-action="calculate">=</button>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+
+        const calculator = document.querySelector('.calculator');
+        const key = document.querySelector('.calculator_key');
+        const display = document.querySelector('.calculator_display');
+        key.addEventListener('click',function(e){
+            if(e.target.matches('button')){
+                const keys = e.target;
+                const action = keys.dataset.action;
+                const keyContent = keys.textContent;
+                const displayedNum = display.textContent;
+                // console.log(displayedNum);
+                // console.log(action);
+                Array.from(keys.parentNode.children).forEach(function(k) {
+                    k.classList.remove('.is-depressed');
+                });
+                console.log([calculator.dataset])
+                if( !action ){
+                    // console.log('ni=umber');
+                    if (displayedNum === '0' || calculator.dataset.previousKeyType === 'operator') {
+                        display.textContent = keyContent;
+
+                    } else {
+                        display.textContent = displayedNum + keyContent;
+
+
+                    }
+                    calculator.dataset.previousKeyType = 'number';
+                }
+                if( action === 'add'|| 
+                    action === 'subtract' ||
+                    action === 'multiply' ||
+                    action === 'divide'
+                ){
+                    // console.log('operator key!');
+                    calculator.dataset.previousKeyType = 'operator';
+                    calculator.dataset.firstValue = displayedNum;
+                    calculator.dataset.operator = action;
+                }
+                
+                if(action === 'decimal'){
+                    let k = calculator.dataset.previousKeyType;
+                    // console.log(k);
+                    if(!displayedNum.includes('.') && k!='operator'){
+                        display.textContent = displayedNum + '.';
+                    }else if(k == 'operator'){
+                        display.textContent = '0.';
+                    }
+                    calculator.dataset.previousKeyType = 'decimal';
+
+                }
+                if(action === 'clear'){
+                    display.textContent = '0';
+                    calculator.dataset.previousKeyType = 'clear';
+                }
+
+                if(action === 'calculate'){
+                    const firstValue = calculator.dataset.firstValue;
+                    const operator = calculator.dataset.operator;
+                    const secondValue = displayedNum;
+
+                    if(firstValue != undefined && operator != undefined){
+                        display.textContent = calculate(firstValue,operator,secondValue);
+                        calculator.dataset.previousKeyType = 'calculator';
+                    }
+                }
+            } 
+        })
+        function calculate(firstNum, operator, secondNum){
+            if(operator === 'add'){
+                return parseFloat(firstNum) + parseFloat(secondNum);
+            } else if(operator === 'subtract'){
+                return parseFloat(firstNum) - parseFloat(secondNum);
+            }else if(operator === 'multiply'){
+                return parseFloat(firstNum) * parseFloat(secondNum);
+            }else if(operator === 'divide'){
+                return parseFloat(firstNum) / parseFloat(secondNum);
+            }
+        }
+    </script>
+</body>
+</html>

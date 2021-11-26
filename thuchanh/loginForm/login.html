@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <button type="button" id="btn-login">Login</button>
+        <div class="container-lg">
+            <div class="login-main">
+                <div class="head">
+                    <h2>Login From</h2>
+                    <div class="close">&#10539;</div>
+                </div>
+                <form action="/login-main">
+                    <div class="avatar">
+                        <img src="https://www.w3schools.com/howto/img_avatar2.png" alt="">
+                    </div>
+                    <div class="user mt-20">
+                        <label for="user-name">User Name :</label> <br>
+                        <input type="text" name="user-name" placeholder="vd : TuanAnh, ..." required>
+                    </div>
+                    <div class="password mt-20">
+                        <label for="password">PassWorld :</label><br>
+                        <input type="password" name="password" placeholder="Enter password" >
+                    
+                    </div>
+                    <button type="submit mt-20" class="login">Login</button>
+                    <div class="checkbox">
+                        <label for="ckeck">
+                            <input type="checkbox" name="ckeck" id="check">remerber me
+                        </label>
+                    </div>
+                    <div class="footer-login mt-20">
+                        <button type="button" class="cancelbtn">Cancel</button>
+                        <span>forgot <a href="">Fasswork?</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        let btnLogin = document.querySelector('#btn-login');
+        btnLogin.onclick = function() {
+            let form = document.querySelector('.container-lg');
+            form.style.display = 'block';
+        }
+        let form = document.querySelector('.container-lg');
+        window.onclick = function(e) {
+            if(e.target  == form){
+                form.style.display = 'none';
+            }
+        }
+        document.querySelector('.close').onclick = function() {
+            form.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

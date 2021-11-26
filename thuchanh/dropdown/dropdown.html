@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            font-size: 20px;
+            padding: 5px 8px;
+            border-radius: 4px;
+            background: #ee55;
+        }
+        div#drop-menu {
+            display: flex;
+            flex-direction: column;
+            width: 150px;
+            border: 1px solid;
+            border-radius: 4px;
+            padding: 10px;
+            box-shadow: 0 3px 0 3px #ccc;
+            position: absolute;
+            top: 47px;
+            left: 20px;
+        }
+        a {
+            text-decoration: none;
+            margin-bottom: 5px;
+            color: #dd6714;
+            padding: 5px 8px;
+        }
+        a:hover {
+        background: #1fad1f;
+        color: #fff;
+        }
+        .drop {
+            display: none;
+        }
+        .active{
+            display: block !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="dropdown">
+        <button type="button" class="dropbtn">Dropdown</button>
+        <div class="drop">
+            <div class="dropdown-menu" id="drop-menu">
+                <a href="">Item1</a>
+                <a href="">Item2</a>
+                <a href="">Item3</a>
+                <a href="">Item4</a>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+        document.querySelector('button').onclick = function(){
+            document.querySelector('.drop').classList.toggle('active');
+        }
+        // click outside of it 
+        window.onclick = function(e) {
+            if(!e.target.matches('.dropbtn')){
+                let dropdown = document.querySelectorAll('.drop');
+                let i;
+                for(i=0; i<dropdown.length; i++){
+                    let opendropdown = dropdown[i];
+                    if(opendropdown.classList.contains('active')){
+                        opendropdown.classList.remove('active');
+                    }
+                }
+            }
+        }
+        // document.querySelector('button').onclick = function(){
+        //     document.querySelector('.drop').classList.toggle('active');
+        // }
+        // // click outside of it
+        // window.onclick = function(e) {
+        //     if(!e.target.matches('.dropbtn')){
+        //         let dropdown = document.querySelectorAll('.drop');
+        //         let i;
+        //         for(i=0; i<dropdown.length; i++){
+        //             let openDropdown = dropdown[i];
+        //             if(openDropdown.classList.contains('active')){
+        //                 openDropdown.classList.remove('active');
+        //             }
+        //         }
+        //     }
+        // }
+    </script>
+</body>
+</html>

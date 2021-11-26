@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.login-main {
+    width: 30%;
+    margin: 30px auto 0;
+    border: 2px solid #000;
+    border-radius: 4px;
+    background: #fff;
+}
+h2 {
+    margin: 20px 10px 10px;
+    font-size: 25px;
+    color: turquoise;
+}
+form {
+    margin: 10px 20px;
+}
+.avatar {
+    text-align: center;
+}
+img {
+    width: 40%;
+    border-radius: 50%;
+}
+.mt-20 {
+    margin-top: 20px;
+}
+label {
+    font-size: 20px;
+    font-weight: bolder;
+}
+input {
+    margin-top: 5px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+}
+button.login {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 15px;
+    background: #59d92f;
+    border-radius: 4px;
+}
+.footer-login.mt-20 {
+    display: flex;
+    justify-content: space-between;
+    background: #ccc;
+    padding: 20px;
+    border-radius: 4px;
+    align-items: center;
+    font-size: 15px;
+}
+button.cancelbtn {
+    padding: 10px 45px;
+    font-size: 20px;
+    border: 0.5px solid #d02828;
+    background: #d02828;
+    border-radius: 4px;
+    color: aliceblue;
+    box-shadow: 2px 3px 0 1px;
+}
+a {
+    text-decoration: none;
+}
+.container-lg {
+    background:rgba(0, 0, 0, 0.4);
+    height: 100vh;
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: none;
+}
+input#check {
+    width: max-content;
+}
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.close {
+    font-size: 20px;
+    margin-right: 20px;
+    border: 1px solid #e1da12;
+    padding: 5px 8px;
+    border-radius: 3px;
+    color: red;
+    cursor: pointer;
+}

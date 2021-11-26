@@ -9,10 +9,9 @@ function plusSlides(n) {
 function currentSlide(n) {
     showSlides(slideIndex = n);
 }
-
 function showSlides(n) {
     let i;
-    let slides = document.querySelectorAll('.mySlides');
+    let slides = document.querySelectorAll('.mySlides'); 
     let dots = document.querySelectorAll('.dot');
     if(n > slides.length) { slideIndex = 1};
     if(n <1) { slideIndex = slides.length};
@@ -27,9 +26,9 @@ function showSlides(n) {
 }
 showSlides1();
 function showSlides1() {
-    var i;
-    var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
     for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";  
     }
