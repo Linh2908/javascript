@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .tabcontent{
+            display: none;
+            border:2px solid #000;
+            text-align: center;
+            padding: 50px 0;
+            border-radius: 5px;
+            color:#fff;
+        }
+        #london{background: red;}
+        #paris{background: green;}
+        #tokyo{background: pink;}
+        #oslo{background: yellow;}
+        .btn{
+            display: flex;
+            justify-content: space-between;
+        }
+        .tablink{
+            flex:1;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div id="london" class="tabcontent">
+            <h1>London</h1>
+            <p>London is the capital city of England.</p>
+          </div>
+          
+          <div id="paris" class="tabcontent">
+            <h1>Paris</h1>
+            <p>Paris is the capital of France.</p>
+          </div>
+          
+          <div id="tokyo" class="tabcontent">
+            <h1>Tokyo</h1>
+            <p>Tokyo is the capital of Japan.</p>
+          </div>
+          
+          <div id="oslo" class="tabcontent">
+            <h1>Oslo</h1>
+            <p>Oslo is the capital of Norway.</p>
+          </div>
+    </div>
+    
+    <div class="btn">
+        <button class="tablink" id="default" onclick="openCity('london',this, 'red')">London</button>
+        <button class="tablink" onclick="openCity('paris',this, 'green')">Paris</button>
+        <button class="tablink" onclick="openCity('tokyo',this, 'pink')">Tokyo</button>
+        <button class="tablink" onclick="openCity('oslo',this, 'yellow')">Oslo</button>
+    </div>
+    <script>
+        function openCity(cityName,elem, color ){
+            let tabContents = document.querySelectorAll('.tabcontent');
+            let btns = document.querySelectorAll('.tablink');
+            
+            // tabContents[0].style.display = 'none';
+            // console.log(tabContents);
+            for( let i=0; i<tabContents.length ; i++){
+                tabContents[i].style.display = 'none';
+            }
+            for(let i=0;  i<btns.length; i++){
+                btns[i].style.backgroundColor = '';
+            }
+            // console.log(cityName);
+            document.getElementById(cityName).style.display = 'block';
+            elem.style.backgroundColor = color;
+        }
+        document.querySelector('#default').click();
+    </script>
+</body>
+</html>

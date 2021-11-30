@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .menu {
+            height: 100%;
+            background: #000;
+            position: fixed;
+            font-size: 14px;
+            padding: 20px 0 0 10px;
+            overflow-x: hidden;
+            transition: 0.5s;
+            left:-12px;
+            width: 0 ;
+            z-index: 10;
+        }
+        .menu>a {
+            clear: both;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            padding: 10px 80px;
+            color: #fff;
+            font-weight: bold;
+            transition: 0.2s ;
+        }
+        .closeBtn{
+            float:right;
+            padding: 10px !important;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        .closeBtn:hover{
+            background: #ccc;
+        }
+        span.openNav {
+            margin-left: 20px;
+            padding: 10px 15px;
+            display: inline-block;
+            border: 2px solid #000;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .main{transition: 0.5s;}
+        .dark {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background: rgba(0,0, 0, 0.4);
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="slideNav">
+        <div class="menu">
+            <a href="javascript:void(0);" class="closeBtn">&times;</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Clients</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="dark"></div>
+    </div>
+    
+    <div class="main">
+        <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+        Illum quasi, natus aliquid sed fugit eligendi velit nulla quaerat unde.
+        Saepe obcaecati sunt fuga itaque expedita distinctio accusantium magnam dolore incidunt!</h2>
+        <p>Click on the element below to open the side navigation menu.</p>
+        <span class="openNav">&#9776; Menu</span>
+    </div>
+    
+    <script>
+        const menu = document.querySelector('.menu');
+        const mainEle = document.querySelector('.main');
+        const dark = document.querySelector('.dark');
+        document.querySelector('.openNav').addEventListener('click',function() {
+            menu.style.width ='230px';
+            mainEle.style.marginLeft = '230px';
+            dark.style.display = 'block';
+        })
+
+        document.querySelector('.slideNav').onclick = function(e){
+            let keys = e.target;
+            if(keys.matches('.closeBtn')|| keys.matches('.dark')){
+                document.querySelector('.menu').style.width ='0';
+                mainEle.style.marginLeft = '0';
+                dark.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

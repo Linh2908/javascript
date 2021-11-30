@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .btn{
+            display: flex;
+            justify-content: space-between;
+        }
+        .tablink{
+            flex:1;
+            padding: 5px 0;
+            font-size: 20px;
+        }
+        #Home{background: red;}
+        #News{background: green;}
+        #Contact{background: pink;}
+        #About{background: yellow;}
+        .tabcontent{
+            text-align: center;
+            padding: 50px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn">
+        <button class="tablink" id="default" onclick="openCity('Home',this, 'red')">Home</button>
+        <button class="tablink" onclick="openCity('News',this, 'green')">News</button>
+        <button class="tablink" onclick="openCity('Contact',this, 'pink')">Contact</button>
+        <button class="tablink" onclick="openCity('About',this, 'yellow')">About</button>
+    </div>
+
+    <div class="content">
+        <div id="Home" class="tabcontent">
+            <h1>Home</h1>
+            <p>Home is the capital city of England.</p>
+        </div>
+        
+        <div id="News" class="tabcontent">
+            <h1>News</h1>
+            <p>News is the capital of France.</p>
+        </div>
+        
+        <div id="Contact" class="tabcontent">
+            <h1>Contact</h1>
+            <p>Contact is the capital of Japan.</p>
+        </div>
+        
+        <div id="About" class="tabcontent">
+            <h1>About</h1>
+            <p>About is the capital of Norway.</p>
+        </div>
+    </div>
+    <script>
+        function openCity(pageName, elm, color){
+            let controls  = document.querySelectorAll('.tablink');
+            let contents = document.querySelectorAll('.tabcontent');
+            
+            for(let i=0; i<controls.length; i++){
+                controls[i].style.backgroundColor = '';
+            }
+            for(let i=0;i<contents.length; i++){
+                contents[i].style.display  = 'none'; 
+            }
+
+            document.getElementById(pageName).style.display = 'block';
+            elm.style.backgroundColor = color;
+        }
+        document.querySelector('#default').click();
+    </script>
+</body>
+</html>

@@ -25,7 +25,7 @@
             justify-content: space-between;
             margin-bottom: 10px;
         }
-        input[type="text"] {
+        input[type="number"] {
             width: 49%;
             height: 30px;
             font-size: 20px;
@@ -45,58 +45,87 @@
     <div class="container">
         <h1>caculator</h1>
         <form action="#">
-            <input type="text" > <input type="text">
+            <input type="number" > <input type="number">
         </form>
-        <div>
-            <button onclick="myfunction()">Addition(+)</button>
-            <button onclick="myfunction1()">Subtration(-)</button>
-            <button onclick="myfunction2()">Multiplacation(*)</button>
-            <button onclick="myfunction3()">Division(/)</button>
+        <div class="key">
+            <button  id="add">Addition(+)</button>
+            <button id='sub'>Subtration(-)</button>
+            <button id="mul">Multiplacation(*)</button>
+            <button id="divi">Division(/)</button>
         </div>
-        <p id="" ></p>
+        <p id="result" ></p>
     </div>
     <script>
         var operator ;
-        function myfunction() {
-            var firstNumber = Number(document.querySelector('input').value);
-            var secondNumber = Number(document.querySelector('input:last-child').value);
-            if(!isNaN(firstNumber) && !isNaN(firstNumber))
-            var result=(firstNumber) + (secondNumber);
-            else{
-                result='Nhap sai!!!';
+        const key = document.querySelector('.key');
+        key.addEventListener('click', function(e) {
+            if(e.target.matches('button')){
+                const keys = e.target;
+                const idValue = keys.id;
+                const firstValue =(document.querySelector('input').value);
+                const secondValue = (document.querySelector('input:last-child').value);
+                console.log(firstValue);
+                console.log(secondValue);
+                
+                if(firstValue != undefined && secondValue !=undefined){
+                    document.querySelector('#result').innerHTML = `result: ${calculator(firstValue,idValue,secondValue)}`;
+                }
+                   
             }
-            document.querySelector('p').innerHTML=`Result Addition :${result}`;
-        }
-        function myfunction1() {
-            var firstNumber = Number(document.querySelector('input').value);
-            var secondNumber = Number(document.querySelector('input:last-child').value);
-            if(!isNaN(firstNumber) && !isNaN(firstNumber))
-            var result=(firstNumber) - (secondNumber);
-            else{
-                result='Nhap sai!!!';
+        })
+
+        function calculator(fisrtValue,operator,secondValue){
+            if(operator == 'add'){
+                return parseFloat(fisrtValue) + parseFloat(secondValue);
+            }else if(operator == 'sub'){
+                return  parseFloat(fisrtValue) - parseFloat(secondValue);
+            }else if(operator == 'mul'){
+                return  parseFloat(fisrtValue) * parseFloat(secondValue);
+            }else if(operator == 'divi'){
+                return  parseFloat(fisrtValue) / parseFloat(secondValue);
             }
-            document.querySelector('p').innerHTML=`Result Saptrition :${result}`;
         }
-        function myfunction2() {
-            var firstNumber = Number(document.querySelector('input').value);
-            var secondNumber = Number(document.querySelector('input:last-child').value);
-            if(!isNaN(firstNumber) && !isNaN(firstNumber))
-            var result=(firstNumber) * (secondNumber);
-            else{
-                result='Nhap sai!!!';
-            }
-            document.querySelector('p').innerHTML=`Result Multiplacation :${result}`;
-        }
-        function myfunction3() {
-            var firstNumber = Number(document.querySelector('input').value);
-            var secondNumber = Number(document.querySelector('input:last-child').value);
-            if(!isNaN(firstNumber) && !isNaN(firstNumber))
-            var result=(firstNumber) / (secondNumber);
-            else{
-                result='Nhap sai!!!';
-            }
-            document.querySelector('p').innerHTML=`Result Division :${result}`;
-        }
+
+        // function myfunction() {
+        //     var firstNumber = Number(document.querySelector('input').value);
+        //     var secondNumber = Number(document.querySelector('input:last-child').value);
+        //     if(!isNaN(firstNumber) && !isNaN(firstNumber))
+        //     var result=(firstNumber) + (secondNumber);
+        //     else{
+        //         result='Nhap sai!!!';
+        //     }
+        //     document.querySelector('p').innerHTML=`Result Addition :${result}`;
+        // }
+        // function myfunction1() {
+        //     var firstNumber = Number(document.querySelector('input').value);
+        //     var secondNumber = Number(document.querySelector('input:last-child').value);
+        //     if(!isNaN(firstNumber) && !isNaN(firstNumber))
+        //     var result=(firstNumber) - (secondNumber);
+        //     else{
+        //         result='Nhap sai!!!';
+        //     }
+        //     document.querySelector('p').innerHTML=`Result Saptrition :${result}`;
+        // }
+        // function myfunction2() {
+        //     var firstNumber = Number(document.querySelector('input').value);
+        //     var secondNumber = Number(document.querySelector('input:last-child').value);
+        //     if(!isNaN(firstNumber) && !isNaN(firstNumber))
+        //     var result=(firstNumber) * (secondNumber);
+        //     else{
+        //         result='Nhap sai!!!';
+        //     }
+        //     document.querySelector('p').innerHTML=`Result Multiplacation :${result}`;
+        // }
+        // function myfunction3() {
+        //     var firstNumber = Number(document.querySelector('input').value);
+        //     var secondNumber = Number(document.querySelector('input:last-child').value);
+        //     if(!isNaN(firstNumber) && !isNaN(firstNumber))
+        //     var result=(firstNumber) / (secondNumber);
+        //     else{
+        //         result='Nhap sai!!!';
+        //     }
+        //     document.querySelector('p').innerHTML=`Result Division :${result}`;
+        // }
     //     var addition = document.querySelector('button');
     //    addition.addEventListener('click',toanTu);
     //     function toanTu(){

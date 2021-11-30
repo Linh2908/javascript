@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .btn{
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            display: flex;
+            align-items: stretch;
+            
+        }
+        .content {
+            flex: 7;
+            padding: 10px;
+            border: 2px solid;
+            border-radius: 4px;
+        }
+        button.tablink {
+            padding: 10px;
+            font-size: 20px;
+        }
+        .tabcontent{
+            display: none;
+        }
+        .action{background: rgb(50, 175, 154);}
+        #Home{display: block;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="btn">
+            <button class="tablink action" id="default" onmouseover="openCity(event,'Home')">Home</button>
+            <button class="tablink" onmouseover="openCity(event,'News')">News</button>
+            <button class="tablink" onmouseover="openCity(event,'Contact')">Contact</button>
+            <button class="tablink" onmouseover="openCity(event,'About')">About</button>
+        </div>
+    
+        <div class="content">
+            <div id="Home" class="tabcontent">
+                <h1>Home</h1>
+                <p>Home is the capital city of England.</p>
+            </div>
+            
+            <div id="News" class="tabcontent">
+                <h1>News</h1>
+                <p>News is the capital of France.</p>
+            </div>
+            
+            <div id="Contact" class="tabcontent">
+                <h1>Contact</h1>
+                <p>Contact is the capital of Japan.</p>
+            </div>
+            
+            <div id="About" class="tabcontent">
+                <h1>About</h1>
+                <p>About is the capital of Norway.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function openCity(event,pageName) {
+            let menuMain = document.querySelectorAll('.tablink');
+            let contents = document.querySelectorAll('.tabcontent');
+            // console.log(contents);
+            for(let i =0 ; i<menuMain.length; i++){
+                menuMain[i].className = menuMain[i].className.replace('action', '');
+            }
+            for(let i=0; i<contents.length; i++){
+                contents[i].style.display = 'none';
+            }
+            document.getElementById(pageName).style.display ='block';
+            event.currentTarget.className +=' action';
+        }
+    </script>
+</body>
+</html>

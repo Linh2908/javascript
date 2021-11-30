@@ -61,7 +61,7 @@
             font-size: 45px;
         }
         .is-depressed{
-            background-color: #ccc;
+            background-color: rgb(31, 25, 25);
         }
     </style>
 </head>
@@ -96,82 +96,65 @@
         </div>
     </div>
     <script>
-        
         const calculator = document.querySelector('.calculator');
-        const key = document.querySelector('.calculator_key');
         const display = document.querySelector('.calculator_display');
-        key.addEventListener('click',function(e){
-            if(e.target.matches('button')){
+        const key = document.querySelector('.calculator_key');
+        key.addEventListener('click',function(e) {
+            if(e.target.matches('button')) {
                 const keys = e.target;
                 const action = keys.dataset.action;
                 const keyContent = keys.textContent;
                 const displayedNum = display.textContent;
-                // console.log(displayedNum);
-                // console.log(action);
-                Array.from(keys.parentNode.children).forEach(function(k) {
-                    k.classList.remove('.is-depressed');
-                });
-                // console.log([calculator.dataset])
-                if( !action ){
-                    // console.log('ni=umber');
-                    if (displayedNum === '0' || calculator.dataset.previousKeyType === 'operator') {
+                if(!action){
+                    if(displayedNum === '0' || calculator.dataset.previousKeyType === 'operator'){
                         display.textContent = keyContent;
-
-                    } else {
+                    }else{
                         display.textContent = displayedNum + keyContent;
-
-
                     }
                     calculator.dataset.previousKeyType = 'number';
                 }
-                if( action === 'add'|| 
+                if(action === 'add'||
                     action === 'subtract' ||
                     action === 'multiply' ||
-                    action === 'divide'
-                ){
-                    // console.log('operator key!');
-                    calculator.dataset.previousKeyType = 'operator';
-                    calculator.dataset.firstValue = displayedNum;
-                    calculator.dataset.operator = action;
-                }
-                
+                    action === 'divide'){
+                        calculator.dataset.previousKeyType = 'operator';
+                        calculator.dataset.operator = action;
+                        calculator.dataset.firstValue = displayedNum;
+                    }
                 if(action === 'decimal'){
-                    let k = calculator.dataset.previousKeyType;
-                    // console.log(k);
-                    if(!displayedNum.includes('.') && k!='operator'){
+                    let k = calculator.dataset.operator;
+                    if(!displayedNum.includes('.') || k != 'operator'){
                         display.textContent = displayedNum + '.';
-                    }else if(k == 'operator'){
+                    }else if(k === 'operator'){
                         display.textContent = '0.';
                     }
                     calculator.dataset.previousKeyType = 'decimal';
-
                 }
                 if(action === 'clear'){
                     display.textContent = '0';
                     calculator.dataset.previousKeyType = 'clear';
                 }
-
                 if(action === 'calculate'){
-                    const firstValue = calculator.dataset.firstValue;
-                    const operator = calculator.dataset.operator;
-                    const secondValue = displayedNum;
+                    let firstValue = calculator.dataset.firstValue;
+                    let operator = calculator.dataset.operator;
+                    let secondValue = displayedNum;
 
                     if(firstValue != undefined && operator != undefined){
                         display.textContent = calculate(firstValue,operator,secondValue);
-                        calculator.dataset.previousKeyType = 'calculator';
+                        calculator.dataset.previousKeyType = 'calculate';
                     }
                 }
-            } 
+            }
         })
-        function calculate(firstNum, operator, secondNum){
-            if(operator === 'add'){
-                return parseFloat(firstNum) + parseFloat(secondNum);
-            } else if(operator === 'subtract'){
-                return parseFloat(firstNum) - parseFloat(secondNum);
-            }else if(operator === 'multiply'){
-                return parseFloat(firstNum) * parseFloat(secondNum);
-            }else if(operator === 'divide'){
-                return parseFloat(firstNum) / parseFloat(secondNum);
+        function  calculate(firstValue, operator, secondValue){
+            if(operator == 'add'){
+                return parseFloat(firstValue) + parseFloat(secondValue);
+            }else  if(operator == 'subtract'){
+                return parseFloat(firstValue) - parseFloat(secondValue);
+            }else  if(operator == 'multiply'){
+                return parseFloat(firstValue) * parseFloat(secondValue);
+            }else  if(operator == 'divide'){
+                return parseFloat(firstValue) / parseFloat(secondValue);
             }
         }
     </script>

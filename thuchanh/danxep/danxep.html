@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        p.item {
+            height: 50px;
+            line-height: 50px;
+            padding-left: 30px;
+            font-size: 20px;
+            font-weight: bolder;
+            text-transform: capitalize;
+            background: #ccc;
+            border: 2px solid #000;
+        }
+        p.item-hidden {
+            display: none;
+        }
+        .action{
+            background: rgb(17, 189, 68)
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="content-item">
+            <p class="item">item 1</p>
+            <p class="item-hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Mollitia laboriosam sint vitae deserunt molestias consequuntur optio ad eveniet in,
+                possimus dicta unde fugit delectus numquam vel perferendis aliquid eligendi adipisci.</p>
+        </div>
+        <div class="content-item">
+            <p class="item">item 2</p>
+            <p class="item-hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Mollitia laboriosam sint vitae deserunt molestias consequuntur optio ad eveniet in,
+                possimus dicta unde fugit delectus numquam vel perferendis aliquid eligendi adipisci.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores nobis quo voluptas ex dignissimos rem possimus mollitia, odit,
+            est accusamus impedit ipsum soluta perferendis minima enim laborum, provident molestiae reprehenderit!</p>
+        </div>
+        <div class="content-item">
+            <p class="item">item 3</p>
+            <p class="item-hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Mollitia laboriosam sint vitae deserunt molestias consequuntur optio ad eveniet in,
+                possimus dicta unde fugit delectus numquam vel perferendis aliquid eligendi adipisci.
+            </p>
+        </div>
+    </div>
+    <script>
+        const contentItem = document.querySelectorAll('.item');
+        const contentItemLength = contentItem.length;
+        for( let i=0 ; i<contentItemLength;i++){
+            contentItem[i].addEventListener('click', function(){
+                this.classList.toggle('action');
+                // console.log([this]);
+                let itemHidden = this.nextElementSibling;
+                console.log([itemHidden]);
+                // itemHidden.style.display = 'block';
+                if(itemHidden.style.display === 'block'){
+                   itemHidden.style.display = 'none';
+                }else{
+                    itemHidden.style.display = 'block';
+                }
+            })
+        }
+    </script>
+</body>
+</html>

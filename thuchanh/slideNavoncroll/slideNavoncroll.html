@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .content {
+            margin-top: 40px;
+            font-size: 20px;
+            width: 200px;
+        }
+        .header-menu {background: #000;}
+        a {
+            font-size: 14px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            display: inline-block;
+        }
+        a:hover{
+            background-color: cornsilk;
+        }
+        .header-menu.fixed{
+            position:fixed;
+            top:0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header> 
+        <div class="header-menu">
+            <a href="">Home</a>
+            <a href="">Home</a>
+            <a href="">Home</a>
+            <a href="">Home</a>
+        </div>
+    </header>
+    <main>
+        <section>
+            <div class="content">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ullam sequi similique enim odio culpa ipsum eos minima animi blanditiis provident fugit asperiores optio architecto, amet natus sed laboriosam! Quasi.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis laborum dolores rerum maiores, necessitatibus, quibusdam nesciunt exercitationem minus sunt qui tempore alias. Quam neque temporibus tempora rerum tenetur corporis aut?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate, tempora labore! Iusto sit quibusdam nulla. Praesentium ipsum iste iusto ipsam unde nisi debitis eligendi nostrum labore commodi, aliquam id quasi?
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque illo iure laboriosam sint maiores eaque at cupiditate deleniti dolore ipsum ratione modi odit, quaerat inventore, hic molestias dicta, ex nemo.
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere, similique consectetur tempora exercitationem quas blanditiis minima aperiam nemo incidunt eligendi! Optio expedita assumenda perferendis sapiente rem saepe maiores iste nisi.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi velit sint accusantium provident hic repellat necessitatibus officiis, dolor, repudiandae rerum enim blanditiis itaque at ipsam architecto maiores eum voluptatem beatae.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam adipisci repellat dolore, iste reprehenderit voluptatum molestiae veritatis quasi quam! Iusto cum magni odio mollitia. Doloribus nam quisquam perferendis sit temporibus!
+            </div>
+        </section>
+    </main>
+    <script>
+        const menu = document.querySelector('.header-menu');
+        window.onscroll = function(e){
+        //    console.log(document.documentElement.scrollTop);
+            if(document.body.scrollTop > 200 || document.documentElement.scrollTop > 200){
+                menu.classList.add('fixed');
+            }else {
+                menu.classList.remove('fixed');
+            }
+        }
+    </script>
+</body>
+</html>

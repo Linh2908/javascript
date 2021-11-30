@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    div#topNav {
+      background: #ccc;
+      padding: 20px 0 20px 10px;
+      position: relative;
+    }
+    .topNav>a {
+        padding: 5px 20px;
+        font-size: 20px;
+        text-decoration: none;
+        color: #fff;
+    }
+    .topNav>a:hover{
+      background: salmon;
+    }
+    .topNav>.icon{display: none;}
+    @media only screen and (max-width:768px){
+      .topNav>a:not(:first-child){display: none;}
+      .topNav>.icon{
+        float:right;
+        display: block !important;
+        padding-bottom:3px ;
+        position: absolute;
+        top:18px;
+        right: 0;
+      }
+      .topNav.responsive {position: relative;}
+      .topNav.responsive .icon{
+        position: absolute;
+        top:16px;
+        right:0;
+      }
+      .topNav.responsive a{
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div class="topNav" id="topNav">
+      <a href="#home" class="action">Home</a>
+      <a href="#contact"> Contact</a>
+      <a href="#news"> News</a>
+      <a href="#about"> About</a>
+      <a href="javaiscript:void(0);" class="icon"><i class="fa fa-bars"></i></a>
+    </div>
+    <script>
+      document.querySelector('.icon').addEventListener('click',function() {
+        let topNav = document.querySelector('#topNav');
+        if(topNav.className === 'topNav'){
+          topNav.className +=' responsive';
+        }else{
+          topNav.className = 'topNav';
+        }
+      })
+    </script>
+</body>
+</html>

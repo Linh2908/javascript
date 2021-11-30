@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .blue{
+            background: blue;
+        }
+        .tabContent{
+            display: none;
+        }
+        .tabs {
+            background: #ccc;
+            padding: 5px;
+        }
+        button.tabLinks {
+            width: 100px;
+            padding: 5px 0;
+        }
+        button.tabLinks:hover {
+            background: #34abd3;
+        }
+        .tabContent {
+            border: 1px solid #000;
+        }
+        span.topright {
+            float: right;
+            margin-right: 10px;
+            font-size: 22px;
+        }
+        span.topright:hover{
+            color:red;
+        }
+        h3 {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <h2>Tabs</h2>
+    <div class="tabs">
+        <button class="tabLinks" data-name="london">London</button>
+        <button class="tabLinks" data-name="paris">Paris</button>
+        <button class="tabLinks" data-name="tokyo">Tokyo</button>
+    </div>
+    <div class="content">
+        <div id="london" class="tabContent">
+            <span class="topright" >&times</span>
+            <h3>London</h3>
+            <p>London is the capital city of England.</p>
+        </div>
+        <div id="paris" class="tabContent">
+            <span class="topright" >&times</span>
+            <h3>Paris</h3>
+            <p>Paris is the capital city of France.</p>
+        </div>
+        <div id="tokyo" class="tabContent">
+            <span class="topright" >&times</span>
+            <h3>Tokyo</h3>
+            <p>Tokyo is the capital city of Japan.</p>
+        </div>
+    </div>
+    <div class="produce">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque nihil magnam et fugit ipsa eius ducimus, sit repellat, cumque incidunt reiciendis quasi, atque sequi harum praesentium quisquam vitae corrupti nobis.</p>
+    </div>
+    <script>
+        const tabs = document.querySelector('.tabs');
+        tabs.addEventListener('click', function(e) {
+            const tabLinks = document.querySelectorAll('.tabLinks');
+            const contents = document.querySelectorAll('.tabContent');
+            const exits = document.querySelectorAll('.topright');
+
+            if(e.target.matches('button')){
+                var tab = e.target;
+                var dataName = tab.dataset.name;
+                tab.classList.toggle('blue');
+                let content = document.getElementById(dataName);
+                if(content.style.display === '' || content.style.display === 'none'){
+                    content.style.display = 'block';
+                }else{
+                    content.style.display = 'none';
+                }
+            }
+
+            for(let i=0 ; i<tabLinks.length; i++){
+               if(tabLinks[i].dataset.name != dataName){
+                   tabLinks[i].classList.remove('blue');
+               }
+            }
+
+            for(let i=0 ; i<contents.length; i++){
+               if(contents[i].id != dataName){
+                   contents[i].style.display = 'none';
+               }
+            }
+
+            for(let i=0 ; i<exits.length; i++){
+            //    if(exit[i].parentElement.id === dataName){
+            //        exit[i].style.display = 'none';
+            //    }
+                if(exits[i].parentElement.id === dataName){
+                    exits[i].addEventListener('click',function(k){
+                        k.target.parentElement.style.display = 'none';
+                        tab.classList.remove('blue');      
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>
