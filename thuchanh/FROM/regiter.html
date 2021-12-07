@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #regFrom {
+            margin: 100px auto;
+            background-color: #ccc;
+            padding: 40px;
+            width: 70%;
+        }
+
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        input {
+            width: 100%;
+            border: 2px solid #000;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: cursive;
+            margin-bottom: 20px;
+        }
+
+        input.invalid {
+            background-color: red;
+        }
+
+        .tab {
+            display: none;
+        }
+
+        #btn {
+            float: right;
+        }
+
+        #btn::after {
+            content: '';
+            clear: both;
+            display: block;
+        }
+
+        button {
+            font-size: 17px;
+            cursor: pointer;
+            border-radius: 4px;
+            padding: 4px 20px;
+            background: #04AA6D;
+        }
+
+        .preBtn {
+            background-color: #bbbbbb;
+        }
+
+        .dots {
+            text-align: center;
+            clear: both;
+        }
+
+        span.dot {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #fff;
+            background: #c3b1b1;
+            display: inline-block;
+            border-radius: 50%;
+        }
+
+        .dot.active {
+            background-color: aqua;
+        }
+
+        .dot.finish {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/action_page.php" id="regFrom">
+        <h1>Regiter:</h1>
+        <div class="tab">
+            Name:
+            <p><input type="text" placeholder="First name ... " oninput="this.className=''" name="fname"></p>
+            <p><input type="text" placeholder="Last name ... " oninput="this.className=''" name="lname"></p>
+        </div>
+        <div class="tab">
+            Contact Info:
+            <p><input type="email" placeholder="E-mail ... " oninput="this.className=''" name="email"></p>
+            <p><input type="tel" placeholder="Phone ... " oninput="this.className=''" name="phone"></p>
+        </div>
+        <div class="tab">
+            Birthday:
+            <p><input type="date" placeholder="First name ... " oninput="this.className=''" name="date"></p>
+        </div>
+        <div class="tab">
+            login Info:
+            <p><input type="text" placeholder="Username ... " oninput="this.className=''" name="uname"></p>
+            <p><input type="password" placeholder="PassWord ... " oninput="this.className=''" name="psw"></p>
+        </div>
+        <div id="btn">
+            <button class="preBtn" onclick="nextPrev(-1)" type="button">Previous</button>
+            <button class="nextBtn" onclick="nextPrev(1)" type="button">Next</button>
+        </div>
+
+        <div class="dots">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </form>
+    <script>
+        let currentTab = 0;
+        showTab(currentTab);
+        function showTab(n) {
+            let tabs = document.querySelectorAll('.tab');
+            tabs[n].style.display = 'block';
+            document.querySelector('.preBtn').style.display = n === 0 ? 'none': 'inline';
+            document.querySelector('.nextBtn').innerHTML = n === tabs.length-1 ? 'Submit': 'Next';
+            fixStepIndicator(n);
+        }
+        
+        function nextPrev(n) {
+            let tabs = document.querySelectorAll('.tab');
+            if( n==1 && !validateForm()){return false;}
+            tabs[currentTab].style.display = 'none';
+            currentTab +=n;
+            if(currentTab >= tabs.length){
+                document.querySelectorAll('.dot')[currentTab].submit();
+                return false;
+            }
+            showTab(currentTab);
+        }
+
+        function validateForm() {
+            let tabs, inputs, i ,valid = true;
+            tabs = document.querySelectorAll('.tab');
+            inputs = tabs[currentTab].querySelectorAll('input');
+            for(i=0 ;i < inputs.length ;i++) {
+                if(inputs[i].value == ''){
+                    inputs[i].className +=' invalid';
+                    valid = false;
+                }
+            }
+            if(valid){
+                document.querySelectorAll('.dot')[currentTab].className +=' active';
+            }
+            return valid;
+        }
+        function fixStepIndicator(n) {
+            let dots = document.querySelectorAll('.dot');
+            for(let i=0; i< dots.length; i++){
+                dots[i].className.replace(' active', '');
+            } 
+            dots[n].className +=' active';
+        }
+
+    </script>
+</body>
+
+</html>

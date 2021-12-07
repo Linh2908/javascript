@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body.html{overflow:hidden;}
+        .header-slides {
+            width: 600px;
+            margin: auto;
+            border: 2px solid #000;
+        }
+        .slide-item {
+            position: relative;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .numberText {
+            position: absolute;
+            padding: 5px 8px;
+            border: 1px solid #000;
+            border-radius: 2px;
+            background: #ccc;
+            left: 5px;
+            top: 5px;
+        }
+
+        .slide {
+            position: relative;
+        }
+
+        .item {
+            position: absolute;
+            font-size: 45px;
+            top: 45%;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 4px 12px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        span.next.item {
+            right: 0;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .item:hover {
+            background-color: rgba(204, 204, 204, 0.411);
+        }
+
+        img {
+            width: 100%;
+        }
+
+        .slide-bottom {
+            display: flex;
+        }
+
+        .demo {
+            opacity: 0.6;
+            cursor: pointer;
+        }
+
+        .active,.demo:hover {
+            opacity: 1;
+        }
+
+        .caption-text {
+            height: 50px;
+            background: #000;
+            text-align: center;
+            color: #fff;
+            font-size: 20px;
+            text-transform: uppercase;
+            padding-top: 13px;
+        }
+        .control {
+            margin-top: -4px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-slides">
+            <div class="slide">
+                <div class="slide-item">
+                    <div class="numberText">1/6</div>
+                    <img src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="">
+                </div>
+                <div class="slide-item">
+                    <div class="numberText">2/6</div>
+                    <img src="https://www.w3schools.com/howto/img_5terre_wide.jpg" alt="">
+                </div>
+                <div class="slide-item">
+                    <div class="numberText">3/6</div>
+                    <img src="	https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="">
+                </div>
+                <div class="slide-item">
+                    <div class="numberText">4/6</div>
+                    <img src="	https://www.w3schools.com/howto/img_lights_wide.jpg" alt="">
+                </div>
+                <div class="slide-item">
+                    <div class="numberText">5/6</div>
+                    <img src="	https://www.w3schools.com/howto/img_nature_wide.jpg" alt="">
+                </div>
+                <div class="slide-item">
+                    <div class="numberText">6/6</div>
+                    <img src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="">
+                </div>
+                <!-- header-control -->
+                <div class="control">
+                    <span class="prev item" onclick="plusSlide(-1)">&#8249;</span>
+                    <span class="next item" onclick="plusSlide(1)">&#8250;</span>
+                </div>
+            </div>
+
+            <!-- caption text -->
+            <div class="caption-text">
+                <p class="caption"></p>
+            </div>
+            <!-- bottom slide -->
+            <div class="slide-bottom">
+                <div class="bottom-item">
+                    <img src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="anh 1"
+                        onclick="currentSlide(1)" class="demo blear active">
+                </div>
+                <div class="bottom-item">
+                    <img src="https://www.w3schools.com/howto/img_5terre_wide.jpg" alt="anh 2" onclick="currentSlide(2)"
+                        class="demo blear">
+                </div>
+                <div class="bottom-item">
+                    <img src="	https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="anh 3"
+                        onclick="currentSlide(3)" class="demo blear">
+                </div>
+                <div class="bottom-item">
+                    <img src="	https://www.w3schools.com/howto/img_lights_wide.jpg" alt="anh 4"
+                        onclick="currentSlide(4)" class="demo blear">
+                </div>
+                <div class="bottom-item">
+                    <img src="	https://www.w3schools.com/howto/img_nature_wide.jpg" alt="anh 5"
+                        onclick="currentSlide(5)" class="demo blear">
+                </div>
+                <div class="bottom-item">
+                    <img src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="anh 6" onclick="currentSlide(6)"
+                        class="demo blear">
+                </div>
+            </div>
+        </div>
+    </header>
+    <script>
+        let indexSlide = 1;
+            showSlides(indexSlide);
+        function plusSlide(n) {
+            showSlides(indexSlide +=n);
+        }
+        // bottom control
+        function currentSlide(n) {
+            showSlides(indexSlide = n);
+        }
+        
+        function showSlides(n) {
+           const slides = document.querySelectorAll('.slide-item');
+           const imgControl = document.querySelectorAll('.demo');
+        //    console.log(imgControl);
+            let caption = document.querySelector('.caption');
+            if(n>slides.length) { indexSlide = 1 };
+            if( n<1 ) {indexSlide = slides.length};
+            for(let i=0; i<slides.length; i++) {
+                slides[i].style.display = 'none';
+            }
+            for(let i=0; i<imgControl.length; i++) {
+                imgControl[i].classList.remove('active');
+            }
+            slides[indexSlide-1].style.display = 'block';
+            imgControl[indexSlide-1].classList.add('active');
+            caption.innerHTML = imgControl[indexSlide - 1].alt;
+        }
+    </script>
+</body>
+
+</html>

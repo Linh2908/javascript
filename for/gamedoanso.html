@@ -10,17 +10,26 @@
     <div class="container">
         <button>Start</button>
         <script>
-            document.querySelector('button').onclick = function(){
+            document.querySelector('button').onclick = function(e){
+                e.target.innerHTML = 'Play again';
                 let random = parseInt(Math.random()*10);
                 let i=0;
                 let num;
                 do{
-                    num = Number(prompt('Nhap 1 so ( 1 -> 10)',''));
+                    let num = parseInt(prompt('nhap 1 so bat ki',''));
+                    if(num === random){
+                        alert('Congratulate');
+                        break;
+                    }
                     i++;
-                }while(num !== random || i<=3);
-               alert('ban da doan dung roi!!');
-                    
-                }
+                    if(i === 3){
+                        alert('Game over');
+                    }
+                }while(i<3);
+                //     let num = parseInt(prompt('nhap 1 so bat ki',''));
+                //         i++;
+                // }while(num !== random && i<3);
+            }
         </script>
     </div>
 </body>

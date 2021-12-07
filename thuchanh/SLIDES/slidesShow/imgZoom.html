@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        img{
+            width: 300px;
+            height: 240px;
+        }
+        div#myresult {
+    width: 300px;
+    height: 300px;
+    border: 2px solid #000;
+    background-repeat: no-repeat;
+}
+.img-zoom-lens{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border:1px solid #d4d4d4;
+}
+    </style>
+</head>
+<body>
+    <div class="img-class-container">
+        <img src="	https://www.w3schools.com/howto/img_girl.jpg" alt="" id="myimage">
+        <div id="myresult" class="img-zoom-result" ></div>
+    </div>
+    <script>
+        function zoomImg(imgID,resultID) {
+            let img, lens, result, cx, cy;
+            img = document.getElementById(imgID);
+            result = document.getElementById(resultID);
+            console.log(img);
+            lens = document.createElement('div');
+            lens.setAttribute('class','img-zoom-lens');
+            img.parentElement.insertBefore(lens,img);
+
+            cx = result.offsetWidth/lens.offsetWidth;
+            cy = result.offsetHeight/lens.offsetHeight;
+            result.style.backgroundImage = `url( ${img.src} )`;
+            result.style.backgroundSize = (img.width*cx) + 'px' + (img.height*cy) + 'px';
+
+            lens.addEventListener('mouseover',moveLens);
+            img.addEventListener('mouseover',moveLens);
+
+            lens.addEventListener('touchmove', moveLens);
+            img.addEventListener('touchmove', moveLens);
+
+            function moveLens(e) {
+                let pos, x, y;
+
+                e.preventDefault();
+
+                pos = getCurrentPos(e);
+
+                x = pos.x - (lens.offsetWidth/2);
+                y = pos.y - (lens.offsetHeight/2);
+
+                if(x>img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+                if(x<0) {x = 0;}
+                if(y > img.height - lens.offsetHeight) { x = img.height -lens.offsetHeight;}
+                if(y<0) {y = 0;}
+
+                lens.style.left = x + 'px';
+                lens.style.top = y + 'px';
+                result.style.backgroundPosition =`-${x*cx}px -${y*cy}px`;
+            }
+            function getCurrentPos(e) {
+                let a, x=0, y=0;
+                e= e || window.event;
+                a = img.getBoundingClientRect();
+                x = e.pageX - a.left;
+                y = e.pageY - a.top;
+                console.log(a);
+                
+                x = x - window.pageXOffset;
+                y = y - window.pageYOffset;
+                return{x : x, y : y};
+            }
+        }
+        zoomImg('myimage','myresult');
+    </script>
+</body>
+</html>

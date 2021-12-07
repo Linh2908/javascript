@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .item{
+            display: none;
+        }
+        img {
+            width: 96%;
+        }
+        .content {
+    text-align: center;
+    margin-bottom: 20px;
+    float: left;
+    width: 33.33%;
+}
+        .active{
+            background: #ccc;
+        }
+        .show{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="btnContainer">
+        <button type="button" class="btn active" onclick="filterSelector('all')">Show All</button>
+        <button type="button" class="btn" onclick="filterSelector('nature')">Nature</button>
+        <button type="button" class="btn" onclick="filterSelector('cars')">Cars</button>
+        <button type="button" class="btn" onclick="filterSelector('people')">People</button>
+    </div>
+    <div class="contentBox">
+        <div class="nature item">
+            <div class="nature-item">
+                <div class="content">
+                    <img src="	https://www.w3schools.com/w3images/mountains.jpg" alt="">
+                    <h4>Moutains</h4>
+                    <p>lorem ...</p>
+                </div>
+            </div>
+
+            <div class="nature-item">
+                <div class="content">
+                    <img src="	https://www.w3schools.com/w3images/mountains.jpg" alt="">
+                    <h4>Moutains</h4>
+                    <p>lorem ...</p>
+                </div>
+            </div>
+            <div class="nature-item">
+                <div class="content">
+                    <img src="	https://www.w3schools.com/w3images/mountains.jpg" alt="">
+                    <h4>Moutains</h4>
+                    <p>lorem ...</p>
+                </div>
+            </div>
+        </div>
+        <!-- cars -->
+        <div class="cars item">
+            <div class="cars-item">
+                <div class="content">
+                    <img src="	https://www.w3schools.com/w3images/cars1.jpg" alt="">
+                    <h4>Moutains</h4>
+                    <p>lorem ...</p>
+                </div>
+            </div>
+
+            <div class="cars-item">
+                <div class="content">
+                    <img src="	https://www.w3schools.com/w3images/cars1.jpg" alt="">
+                    <h4>Moutains</h4>
+                    <p>lorem ...</p>
+                </div>
+            </div>
+            <div class="cars-item">
+                <div class="content">
+                    <img src="	https://www.w3schools.com/w3images/cars1.jpg" alt="">
+                    <h4>Moutains</h4>
+                    <p>lorem ...</p>
+                </div>
+            </div>
+        </div>
+        <!-- people -->
+        <div class="people item">
+            <div class="people-item">
+                <div class="content">
+                    <img src="	https://www.w3schools.com/w3images/people1.jpg" alt="">
+                    <h4>Moutains</h4>
+                    <p>lorem ...</p>
+                </div>
+            </div>
+
+            <div class="people-item">
+                <div class="content">
+                    <img src="	https://www.w3schools.com/w3images/people1.jpg" alt="">
+                    <h4>Moutains</h4>
+                    <p>lorem ...</p>
+                </div>
+            </div>
+            <div class="people-item">
+                <div class="content">
+                    <img src="	https://www.w3schools.com/w3images/people1.jpg" alt="">
+                    <h4>Moutains</h4>
+                    <p>lorem ...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        filterSelector('all');
+
+        function filterSelector(keyWork) {
+            let x,i;
+            x = document.querySelectorAll('.item');
+            if(keyWork == 'all'){
+                keyWork = '';
+            }
+            for(i =0 ; i<x.length ; i++){
+                removeClass(x[i],'show');
+                if(x[i].className.indexOf(keyWork) >-1){
+                    addClass(x[i],'show');
+                }
+            }
+        }
+        
+
+        function removeClass(element, name) {
+            let i, arr1, arr2;
+            arr1 = element.className.split(' ');
+            arr2 = name.split(' ');
+            for( i=0 ; i<arr2.length; i++) {
+                while(arr1.indexOf(arr2[i]) >-1){
+                    arr1.splice(arr1.indexOf(arr2[i]),1);
+                }
+            }
+            element.className = arr1.join(' ');
+        }
+
+        function addClass(element, name) {
+            let i, arr1, arr2;
+            arr1 = element.className.split(' ');
+            arr2 = name.split(' ');
+            for( i=0 ; i<arr2.length; i++) {
+                if(arr1.indexOf(arr2[i]) == -1){
+                    element.className += ` ${arr2[i]}`;
+                }
+            }
+        }
+
+        let btns = document.querySelectorAll('.btn');
+        for(let i=0; i<btns.length ;i++) {
+            btns[i].addEventListener('click', function() {
+                let current = document.querySelectorAll('.active');
+                current[0].className = current[0].className.replace(' active', ' ');
+                this.className += ' active';
+            })
+        }
+    </script>
+</body>
+</html>
