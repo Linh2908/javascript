@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Textarea in here</h2>
+        <form action="./actiion-page.php">
+            <textarea name="game" id="Mygame" cols="60" rows="30" onkeydown="myFunction();"></textarea>
+        </form>
+    </div>
+    <script>
+        let arr = new Array(), content='';
+        arr[1] = 'T', arr[2] = "o" , arr[3] = 'i', arr[4] = ' ', arr[5] = 'l', arr[6] = 'a', arr[7] = ' ',
+        arr[8] = 'a', arr[9] = 'i', arr[10] = '.',arr[11] = ' ',arr[12] = 'N', arr[13] = 'e', arr[14] = 'n', 
+        arr[15] = 't', arr[16] = 'o', arr[17] = 'i', arr[18] = ' ', arr[19] = 'p', arr[20] = 'h',
+        arr[21] = 'a', arr[22] = 'i', arr[23] = ' ', arr[24] = 'c', arr[25] = 'o', arr[26] = ' ', 
+        arr[27] = 'g', arr[28] = 'a', arr[29] = 'n', arr[30]='g';
+
+        function myFunction() {
+            let input =document.querySelector('#Mygame').value;
+            let length = input.length;  
+            if(length > 0) {
+                for(let i =1; i<= length; i++ ){
+                    content +=arr[i];
+                    if(i == 30){
+                        document.querySelector('#Mygame').value = '';
+                        content = '';
+                    }
+                }
+
+            }    
+            document.querySelector('#Mygame').value = content;
+            content = '';
+            setTimeout(myFunction, 1);
+        }
+       
+
+
+    </script>
+</body>
+</html>
