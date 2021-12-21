@@ -81,6 +81,7 @@
         let index = 0;
         let tb ='';
         let pos = 0;
+        let isDEL = '';
         const ADDBTN = document.querySelector('#btn1');
         let inputElement = document.querySelector('input[type="text"]');
         ADDBTN.addEventListener('click', function() {
@@ -93,13 +94,17 @@
                 arr[pos] = inputElement.value.toUpperCase();
                 inputElement.value = '';
                 ADDBTN.innerText = 'ADD';
-            }else {
-                // console.log('Vi tri can xoa',pos);
-                arr.splice(pos,1);
-                inputElement.value = '';
-                ADDBTN.innerText = 'ADD';
-                index --;
+            }else{
+                    if(isDEL) {
+                        arr.splice(pos,1);
+                        inputElement.value = '';
+                        ADDBTN.innerText = 'ADD';
+                        index --;
+                    }else{
+                        ADDBTN.innerText = 'ADD';
+                    }
             }
+             
             document.querySelector('#quantity').innerHTML = arr.length;
             // console.log('length',arr.length);
         });
@@ -118,7 +123,7 @@
                     inputElement.value = arr[index];
                     pos = index;
                    ADDBTN.innerText = 'Edit';
-                   console.log(pos);
+                //    console.log(pos);
                }
             });
         })
@@ -126,14 +131,12 @@
             let btnDEL = document.querySelectorAll('.delete');
             btnDEL.forEach((element,index) => {
                element.onclick = function() {
-                    inputElement.value = arr[index];
                     pos = index;
-                   ADDBTN.innerText = 'DELETE';
+                    isDEL= confirm(arr[index]);
+                    ADDBTN.innerText = 'DEL';
                }
             });
         })
-        
-        
     </script>
 </body>
 </html>
