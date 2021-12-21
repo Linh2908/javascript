@@ -1,61 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        input{
+
+        input {
             width: 100%;
             padding: 12px;
-            border:1px solid #ccc;
+            border: 1px solid #ccc;
             border-radius: 4px;
             margin-top: 6px;
             margin-bottom: 16px;
         }
+
         input[type="submit"] {
-    background: #1e691d;
-    color: #fff;
-}
-.message{
-    display: none;
-    background-color: #f1f1f1;
-    color:#000;
-    position: relative;
-    padding: 20px;
-    margin-top: 10px;
-}
-.message p{
-    padding: 10px 35px;
-    font-size:14px;
-}
+            background: #1e691d;
+            color: #fff;
+        }
 
-.valid{
-   color:green;
-}
-.valid ::before{
-    position: relative;
-    left:-35px;
-    content: "✔";
-}
+        .message {
+            display: none;
+            background-color: #f1f1f1;
+            color: #000;
+            position: relative;
+            padding: 20px;
+            margin-top: 10px;
+        }
 
-/* error */
-.invalid{
-    color:red;
-}
-.invalid::before{
-    position: relative;
-    left:-35px;
-    content: "✖";
-}
+        .message p {
+            padding: 10px 35px;
+            font-size: 14px;
+        }
+
+        .valid {
+            color: green;
+        }
+
+        .valid ::before {
+            position: relative;
+            left: -35px;
+            content: "✔";
+        }
+
+        /* error */
+        .invalid {
+            color: red;
+        }
+
+        .invalid::before {
+            position: relative;
+            left: -35px;
+            content: "✖";
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <form action="/action_page.php">
@@ -64,7 +72,8 @@
 
             <label for="psw">PassWord</label>
             <input type="password" id="psw" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-            title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                required>
             <input type="submit" value="Submit">
         </form>
     </div>
@@ -82,41 +91,41 @@
         let number = document.querySelector('#number');
         let length = document.querySelector('#length');
 
-        myInput.onfocus = function() {
+        myInput.onfocus = function () {
             document.querySelector('.message').style.display = 'block';
         }
-        myInput.onblur = function() {
+        myInput.onblur = function () {
             document.querySelector('.message').style.display = 'none';
         }
-        myInput.onkeyup = function() {
+        myInput.onkeyup = function () {
             let lowerCaseLetters = /[a-z]/g;
-            if(myInput.value.match(lowerCaseLetters)) {
+            if (myInput.value.match(lowerCaseLetters)) {
                 letter.classList.remove('invalid');
                 letter.classList.add('valid');
-            }else{
+            } else {
                 letter.classList.add('invalid');
                 letter.classList.remove('valid');
             }
             let upperCaseLetters = /[A-Z]/g;
-            if(myInput.value.match(upperCaseLetters)) {
+            if (myInput.value.match(upperCaseLetters)) {
                 capital.classList.remove('invalid');
                 capital.classList.add('valid');
-            }else{
+            } else {
                 capital.classList.add('invalid');
                 capital.classList.remove('valid');
             }
             let numbers = /[0-9]/g;
-            if(myInput.value.match(numbers)) {
+            if (myInput.value.match(numbers)) {
                 number.classList.remove('invalid');
                 number.classList.add('valid');
-            }else{
+            } else {
                 number.classList.add('invalid');
                 number.classList.remove('valid');
             }
-            if(myInput.value.length>8) {
+            if (myInput.value.length > 8) {
                 length.classList.remove('invalid');
                 length.classList.add('valid');
-            }else{
+            } else {
                 length.classList.add('invalid');
                 length.classList.remove('valid');
             }
@@ -169,4 +178,5 @@
         // }
     </script>
 </body>
+
 </html>

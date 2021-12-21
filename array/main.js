@@ -8,6 +8,7 @@ document.querySelector('#btnAdd').onclick = function(){
 document.querySelector('#btnDisplay').onclick = function(){
     let e = '<hr>';
     let arrLength = arr.length;
+    console.log(arrLength);
     for(let i = 0;i<arrLength;i++){
         e += `Element ${i} = ${arr[i]} <br>`;
     }

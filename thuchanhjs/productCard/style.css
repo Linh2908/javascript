@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Corinthia:wght@700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    background: linear-gradient(to right, #4daf54, #3d8880);
+    font-family: 'Corinthia';
+}
+
+.card{
+    margin: 120px auto;
+    width: 320px;
+    height: 400px;
+    background-color: #000;
+    border-radius: 15px;
+    padding: 20px;
+    color:#fff;
+}
+
+.card_heart, .card_cart{
+    font-size: 25px;
+    display: inline-block;
+}
+.card_cart{float: right;}
+.card_img img{width: 100%;
+    object-fit: cover;
+}
+
+.card_title{
+    text-align: center;
+    font-size: 25px;
+    color:#4daf54;
+}
+.card_price{
+    text-align: center;
+    font-size: 20px;
+}

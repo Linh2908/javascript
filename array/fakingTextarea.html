@@ -10,7 +10,7 @@
     <div class="container">
         <h2>Textarea in here</h2>
         <form action="./actiion-page.php">
-            <textarea name="game" id="Mygame" cols="60" rows="30" onkeydown="myFunction();"></textarea>
+            <textarea name="game" id="myGame" cols="60" rows="30" onkeydown="myFunction();"></textarea>
         </form>
     </div>
     <script>
@@ -20,23 +20,24 @@
         arr[15] = 't', arr[16] = 'o', arr[17] = 'i', arr[18] = ' ', arr[19] = 'p', arr[20] = 'h',
         arr[21] = 'a', arr[22] = 'i', arr[23] = ' ', arr[24] = 'c', arr[25] = 'o', arr[26] = ' ', 
         arr[27] = 'g', arr[28] = 'a', arr[29] = 'n', arr[30]='g';
-
+        let string = ' helloWord';
+        let array2 = string.split('');
         function myFunction() {
-            let input =document.querySelector('#Mygame').value;
+            let input =document.querySelector('#myGame').value;
             let length = input.length;  
             if(length > 0) {
                 for(let i =1; i<= length; i++ ){
-                    content +=arr[i];
-                    if(i == 30){
-                        document.querySelector('#Mygame').value = '';
+                    content +=array2[i];
+                    if(i == 10){
+                        document.querySelector('#myGame').value = '';
                         content = '';
                     }
                 }
 
             }    
-            document.querySelector('#Mygame').value = content;
+            document.querySelector('#myGame').value = content;
             content = '';
-            setTimeout(myFunction, 1);
+            setTimeout(myFunction, 5000);
         }
        
 

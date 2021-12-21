@@ -42,6 +42,18 @@
             margin-left:10px;
             cursor: pointer;
         }
+        #table>div{display: flex;align-items: center; margin-bottom: 10px;}
+        #table>div p{flex:1}
+        .display {
+            margin-top: 10px;
+            width: 60%;
+        }
+        .tiltle {
+            margin-top: 5px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .tiltle>p {color: red;}
     </style>
 </head>
 <body>
@@ -49,22 +61,79 @@
         <h1>Add New Product</h1>
         <div class="form_main">
             <form action="#">
-            <input type="text" name="addProduct" placeholder="New produce"> 
+                <input type="text" name="addProduct" placeholder="New produce"> 
                 <button type="button" id="btn1">Add</button>
             </form>
         </div>
-        <div id="table"></div>
+        <div class="display">
+            <h3>DISPLAY ALL PRODUCT</h3>
+            <div class="tiltle">
+                <h4>Product Name </h4>
+                <p><span id="quantity"></span> product</p>
+            </div>
+            <div id="table"></div>
+        </div>
+        
     </div>
     <script>
-        document.querySelector('#btn1').onclick =function(){
-            let tb ='<table>';
-            tb +='<tr>';
-            let product = document.querySelector('input[type="text"]').value;
-            tb +=`<td> ${product}</td> <td> <button id="btn2">edit</button></td> <td> <button id="btn2">delete</button></td>`;
-            tb +='</tr>';
-            tb +='</table>';
-            document.querySelector('#table').innerHTML=tb;
-        }
+
+        let arr = new Array();
+        let index = 0;
+        let tb ='';
+        let pos = 0;
+        const ADDBTN = document.querySelector('#btn1');
+        let inputElement = document.querySelector('input[type="text"]');
+        ADDBTN.addEventListener('click', function() {
+            if(ADDBTN.innerText.toUpperCase() == "ADD") {
+                arr[index] = inputElement.value.toUpperCase();
+                inputElement.value = ''
+                index ++;
+            }
+            else if( ADDBTN.innerText.toUpperCase() == "EDIT"){
+                arr[pos] = inputElement.value.toUpperCase();
+                inputElement.value = '';
+                ADDBTN.innerText = 'ADD';
+            }else {
+                // console.log('Vi tri can xoa',pos);
+                arr.splice(pos,1);
+                inputElement.value = '';
+                ADDBTN.innerText = 'ADD';
+                index --;
+            }
+            document.querySelector('#quantity').innerHTML = arr.length;
+            // console.log('length',arr.length);
+        });
+        ADDBTN.addEventListener('click', function() {
+            arr.forEach(element => {
+                tb += `<div> <p>${element}</p> <button type='button' class='edit'>edit</button>
+                    <button type='button' class='delete'>DELETE</button></div>`;
+            });
+            document.querySelector('#table').innerHTML = tb;
+            tb = '';
+        })
+        ADDBTN.addEventListener('click', function() {
+            let btnEdit = document.querySelectorAll('.edit');
+            btnEdit.forEach((element,index) => {
+               element.onclick = function() {
+                    inputElement.value = arr[index];
+                    pos = index;
+                   ADDBTN.innerText = 'Edit';
+                   console.log(pos);
+               }
+            });
+        })
+        ADDBTN.addEventListener('click', function() {
+            let btnDEL = document.querySelectorAll('.delete');
+            btnDEL.forEach((element,index) => {
+               element.onclick = function() {
+                    inputElement.value = arr[index];
+                    pos = index;
+                   ADDBTN.innerText = 'DELETE';
+               }
+            });
+        })
+        
+        
     </script>
 </body>
 </html>
