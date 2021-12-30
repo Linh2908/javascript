@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class myDate{
+        day;
+        month;
+        year;
+
+        constructor (day, month, year) {
+            this.day = day;
+            this.month = month;
+            this.year = year;
+        }
+
+        setDate(day, month, year) {
+            this.day = day;
+            this.month = month;
+            this.year = year;
+        }
+
+        setDay(day) {
+            this.day = day;
+        }
+
+        setMonth(month) {
+            this.month = month;
+        }
+
+        setYear(year) {
+            this.year = year;
+        } 
+
+        getDay(day) {
+           return this.day;
+        }
+
+        getMonth(month) {
+           return this.month 
+        }
+
+        getYear(year) {
+           return this.year ;
+        } 
+        toStrong() {
+            return `${this.getDay()} / ${this.getMonth()} / ${this.getYear(b)}`;
+        }
+    }
+
+    let date1 = new myDate(28, 12, 2021);
+    console.log(date1.getDay());
+    console.log(date1.getMonth());
+    console.log(date1.getYear());
+    console.log(date1.toStrong());
+</script>
+</html>

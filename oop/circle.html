@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Circle{
+        radius
+        color
+
+        constructor (radius, color) {
+            this.radius = radius;
+            this.color = color;
+        }
+
+        setRadius(radius) {
+            this.radius = radius;
+        }
+
+        setColor(color) {
+            this.color = color;
+        }
+
+        getRadius() {
+            return this.radius;
+        }
+
+        getColor() {
+            return this.color;
+        }
+
+        getPerimeter() {
+            return Math.PI*2*this.getRadius();
+        }
+
+        getArea() {
+            return Math.PI*Math.pow(this.getRadius(),2);
+        }
+    }
+    let mycircle = new Circle(2,"red");
+    console.log(mycircle.getRadius());
+    console.log("Chu vi cua hinh tron la :", mycircle.getPerimeter().toFixed(3) );
+    console.log("Dien Tich cua hinh tron la :", mycircle.getArea().toFixed(3) );
+
+</script>
+</html>

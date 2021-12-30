@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="rectangle" width="800" height="400" style="border:1px solid #000"></canvas>
+    <p></p>
+</body>
+<script>
+    class Rectangle{
+        length;
+        width;
+
+        constructor(){}
+
+        setLength(length){
+            this.length = length;
+        }
+
+        setWidth(width){
+            this.width = width;
+        }
+
+        getLength() {
+            return this.length;
+        }
+
+
+        getWidth() {
+            return this.width;
+        }
+
+        getArea(){
+            return this.getLength()* this.getWidth();
+        }
+
+        getPerimeter() {
+            return 2*this.getLength()* this.getWidth();
+        }
+
+        drawRectangle(x,y,width, height) {
+            let ctx = document.querySelector("#rectangle").getContext("2d");
+            ctx.fillStyle = "#e1e1e1";
+            ctx.fillRect(x,y, width, height);
+            console.log("ok");
+        }
+
+    }
+
+    let rectangle  = new Rectangle();
+
+    rectangle.setLength(200);
+    rectangle.setWidth(100);
+
+    rectangle.drawRectangle(20,20,rectangle.getLength(),rectangle.getWidth());
+    document.querySelector('p').innerText = `Chu vi = ${rectangle.getPerimeter()} va Dien tich : ${rectangle.getArea()} `
+
+</script>
+</html>
