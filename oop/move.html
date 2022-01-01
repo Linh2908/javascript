@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="game" style="border: 1px solid; width: 1200px; height: 400px;" ></div>
+    <button onclick="stop();">STOP</button>
+    <button onclick="start();">START</button>
+</body>
+<script>
+    class myImage{
+        img;
+        left;
+        top;
+        width;
+        height;
+        speed;
+
+        constructor(img,left, top, width, height, speed) {
+            this.img = img;
+            this.left = left;
+            this.top = top;
+            this.height = height;
+            this.width = width;
+            this.speed = speed;
+        }
+
+        getImgElement() {
+            return `<img src ="${this.img}" width = "${this.width}" height ="${this.height}" 
+            style="position : relative; top: ${this.top}px; left: ${this.left}px ">`;
+        }
+
+        moveRight(){
+            return this.left += this.speed;
+        }
+
+        moveLeft(){
+            return this.left -= this.speed;
+        }
+
+        moveDown(){
+            return this.top += this.speed;
+        }
+
+        moveUp(){
+            return this.top -= this.speed;
+        }
+    }
+
+    let image = new myImage("./images.jpg",0,0,100,100, 10);
+
+    function play() {
+        if(image.left < 1100 && image.top == 0){
+            image.moveRight();
+        }else if(image.top < 300 && image.left == 1100){
+            image.moveDown();
+        }else if(image.left > 0) {
+            image.moveLeft();
+        }else if(image.top > 0){
+            image.moveUp();
+
+        }
+        document.querySelector("#game").innerHTML = image.getImgElement();
+    }
+
+    let  myInterval;
+
+    function start() {
+        myInterval = setInterval(play, 100);
+    }
+    function stop() {
+        clearInterval(myInterval);
+    }
+</script>
+</html>

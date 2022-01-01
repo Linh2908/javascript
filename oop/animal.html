@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Animal {
+            name;
+            weight;
+
+            constructor(name, weight){
+                this.name = name;
+                this.weight = weight;
+            }
+
+            makeSound(sound) {
+                console.log(sound);
+            }
+        }
+
+
+        class Rat extends Animal {
+
+            constructor(name, weight, speed, isLife) {
+                super(name, weight);
+                this.speed = speed;
+                this.isLife = isLife;
+            }
+
+        }
+        
+        class Cat extends Animal {
+
+
+            constructor(name, weight, maxSpeed) {
+                super(name, weight);
+                this.maxSpeed = maxSpeed;
+            }
+
+            catchMouse(mouse) {
+
+                return this.maxSpeed > mouse.speed ?  true : false ;
+            }
+
+            eatMouse(mouse) {
+                if(this.catchMouse(mouse)){
+                    console.log(`${this.name} caught ${mouse.name}`);
+                    if(mouse.isLife) {
+                        console.log(`${this.name} ate ${mouse.name}`);
+                        console.log(this.weight + mouse.weight);
+                    }else{
+                        console.log(`${this.name} didn't eat ${mouse.name}`);
+                    }
+                }else{
+                    console.log(`${this.name} didn't catch ${mouse.name}`);
+
+                }
+            }
+        }
+        let mouse = new Rat("jerry", 200, 20, true);
+        mouse.makeSound("chit chit");
+        let cat = new Cat("tom", 500, 30);
+        cat.makeSound("meo meo");
+        cat.catchMouse(mouse);
+        cat.eatMouse(mouse);
+    </script>
+</body>
+</html>

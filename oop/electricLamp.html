@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class ElectricLamp{
+        status;
+
+        constructor(){
+            this.status = false;
+        }
+
+        isTurn() {
+            this.status = this.status ? false : true; 
+        }
+
+    }
+
+
+
+    class SwicthButton {
+        status;
+        lamp;
+
+        constructor() {
+            this.status = false;
+        }
+
+        connectToLamp(lamp) {
+            this.lamp = lamp;
+        }
+
+        isSwicth() {
+            if(this.status){
+                this.status = false;
+                this.lamp.isTurn();
+                alert("ok");
+            }else{
+                this.status =  true;
+                this.lamp.isTurn();
+                console.log("da tat");
+            }
+        }
+
+    }
+    let light = new ElectricLamp();
+    let mySwitch =  new SwicthButton();
+
+    mySwitch.isSwicth();
+    mySwitch.connectToLamp(light);
+
+
+    mySwitch.isSwicth();
+    console.log(mySwitch.status);
+</script>
+</html>

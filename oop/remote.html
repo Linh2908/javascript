@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        class Tivi{
+            currentChannal;
+            currentVolume;
+            status;
+
+            constructor(currentChannal, currentVolume, status) {
+                this.currentChannal = currentChannal;
+                this.currentVolume = currentVolume;
+                this.status = false;
+            }
+
+            setStatus(status) {
+                this.status = status;
+            }
+
+            changeChannel(newChannel) {
+                this.currentChannal = newChannel;
+            }
+
+            changeVolume(newVolume){
+                this.currentVolume  = newVolume;
+            }
+
+        }
+
+        class Remote{
+
+            constructor(channelID){
+                this.channelID = channelID;
+            }
+
+            controlTivi(tivi){
+               if(tivi.status){
+                   console.log("da tat tivi");
+                   tivi.status = false;
+               }else{
+                   console.log("da vat tivi");
+                   tivi.status = true;
+               }
+            }
+
+            setChannelID(tivi, newChannelID) {
+                if(tivi.status){
+                    this.channelID = newChannelID;
+                    tivi.changeChannel(`channel ${this.channelID}`);
+                }
+               
+            }
+            controlChannel(tivi){
+                tivi.changeChannel(`channel ${this.channelID}`);
+            }
+
+            plusChannelID(tivi){
+                this.channelID++;
+                tivi.changeChannel(`channel ${this.channelID}`);
+            }
+
+            plusChannelID(tivi){
+                this.channelID++;
+                tivi.changeChannel(`channel ${this.channelID}`);
+            }
+
+            decreaseChannelID(tivi){
+                this.channelID--;
+                tivi.changeChannel(`channel ${this.channelID}`);
+            }
+
+
+            plusVolume(tivi){
+                tivi.currentVolume ++;
+                // tivi.changeVolume(tivi.currentVolume);
+            }
+
+            decreaseChannelID(tivi){
+                this.channelID--;
+                tivi.changeChannel(`channel ${this.channelID}`);
+            }
+
+
+
+        }
+
+        let sony = new Tivi("VTV1", 20, true);
+        let remmote = new Remote(3);
+        remmote.controlChannel(sony);
+        console.log(sony.currentChannal);
+        remmote.plusChannelID(sony);
+        console.log(sony.currentChannal);
+
+        remmote.plusVolume(sony);
+        console.log(sony.currentVolume);
+
+
+    </script>
+</body>
+</html>
