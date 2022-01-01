@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
 
-        class Tivi{
+        class Tivi {
             currentChannal;
             currentVolume;
             status;
@@ -28,74 +30,74 @@
                 this.currentChannal = newChannel;
             }
 
-            plusVolume(){
-                if(this.status){
-                    this.currentVolume ++;
+            plusVolume() {
+                if (this.status) {
+                    this.currentVolume++;
                 }
             }
 
-            decreaseVolume(){
-                if(this.status){
-                    this.currentVolume --;
+            decreaseVolume() {
+                if (this.status) {
+                    this.currentVolume--;
                 }
             }
 
         }
 
-        class Remote{
+        class Remote {
 
-            constructor(channelID){
+            constructor(channelID) {
                 this.channelID = channelID;
             }
 
-            controlTivi(tivi){
-               if(tivi.status){
-                   console.log("da tat tivi");
-                   tivi.status = false;
-               }else{
-                   console.log("da vat tivi");
-                   tivi.status = true;
-               }
+            controlTivi(tivi) {
+                if (tivi.status) {
+                    console.log("da tat tivi");
+                    tivi.status = false;
+                } else {
+                    console.log("da bat tivi");
+                    tivi.status = true;
+                }
             }
 
             setChannelID(tivi, newChannelID) {
-                if(tivi.status){
+                if (tivi.status) {
                     this.channelID = newChannelID;
                     tivi.changeChannel(`channel ${this.channelID}`);
                 }
-               
+
             }
-            controlChannel(tivi){
-                if(tivi.status){
+            controlChannel(tivi) {
+                if (tivi.status) {
                     tivi.changeChannel(`channel ${this.channelID}`);
                 }
             }
 
-            plusChannelID(tivi){
+            plusChannelID(tivi) {
 
-                if(tivi.status){
+                if (tivi.status) {
                     this.channelID++;
                     tivi.changeChannel(`channel ${this.channelID}`);
                 }
             }
 
-            decreaseChannelID(tivi){
-                if(tivi.status){
+            decreaseChannelID(tivi) {
+                if (tivi.status) {
                     this.channelID--;
                     tivi.changeChannel(`channel ${this.channelID}`);
                 }
             }
 
 
-            plusVolume(tivi){
-                if(tivi.status){
-                    tivi.currentVolume ++;
+            plusVolume(tivi) {
+                if (tivi.status) {
+                    tivi.currentVolume++;
                 }
             }
 
-            decreaseVolume(tivi){
-                if(tivi.status){
-                    tivi.currentVolume --;
+            decreaseVolume(tivi) {
+                if (tivi.status) {
+                    tivi.currentVolume--;
                 }
             }
 
@@ -112,4 +114,5 @@
 
     </script>
 </body>
+
 </html>
