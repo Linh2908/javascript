@@ -28,8 +28,16 @@
                 this.currentChannal = newChannel;
             }
 
-            changeVolume(newVolume){
-                this.currentVolume  = newVolume;
+            plusVolume(){
+                if(this.status){
+                    this.currentVolume ++;
+                }
+            }
+
+            decreaseVolume(){
+                if(this.status){
+                    this.currentVolume --;
+                }
             }
 
         }
@@ -58,33 +66,37 @@
                
             }
             controlChannel(tivi){
-                tivi.changeChannel(`channel ${this.channelID}`);
+                if(tivi.status){
+                    tivi.changeChannel(`channel ${this.channelID}`);
+                }
             }
 
             plusChannelID(tivi){
-                this.channelID++;
-                tivi.changeChannel(`channel ${this.channelID}`);
-            }
 
-            plusChannelID(tivi){
-                this.channelID++;
-                tivi.changeChannel(`channel ${this.channelID}`);
+                if(tivi.status){
+                    this.channelID++;
+                    tivi.changeChannel(`channel ${this.channelID}`);
+                }
             }
 
             decreaseChannelID(tivi){
-                this.channelID--;
-                tivi.changeChannel(`channel ${this.channelID}`);
+                if(tivi.status){
+                    this.channelID--;
+                    tivi.changeChannel(`channel ${this.channelID}`);
+                }
             }
 
 
             plusVolume(tivi){
-                tivi.currentVolume ++;
-                // tivi.changeVolume(tivi.currentVolume);
+                if(tivi.status){
+                    tivi.currentVolume ++;
+                }
             }
 
-            decreaseChannelID(tivi){
-                this.channelID--;
-                tivi.changeChannel(`channel ${this.channelID}`);
+            decreaseVolume(tivi){
+                if(tivi.status){
+                    tivi.currentVolume --;
+                }
             }
 
 
@@ -92,14 +104,10 @@
         }
 
         let sony = new Tivi("VTV1", 20, true);
-        let remmote = new Remote(3);
-        remmote.controlChannel(sony);
-        console.log(sony.currentChannal);
-        remmote.plusChannelID(sony);
-        console.log(sony.currentChannal);
-
-        remmote.plusVolume(sony);
-        console.log(sony.currentVolume);
+        let remote = new Remote(3);
+        remote.controlTivi(sony);
+        console.log(sony.status);
+        remote.setChannelID(sony, 4);
 
 
     </script>
