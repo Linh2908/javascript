@@ -40,7 +40,7 @@ function playBall() {
                 document.querySelector("#play").style.display = "block";
                 document.location.reload();
            }else{
-                alert("SEEM YOU AGAIN !!!")
+                alert("SEEN YOU AGAIN !!!")
                 clearInterval(checkPlay);
             }
            
@@ -165,7 +165,7 @@ let bricks = [];
                             if(anwser){
                                 document.location.reload();
                             }else{
-                                alert("SEEM YOU AGAIN !!!")
+                                alert("SEEN YOU AGAIN !!!")
                                 clearInterval(checkPlay);
                             }
                             

@@ -9,7 +9,7 @@ class Brick {
 
     draw() {
         let ctx = document.querySelector("#myCanvas").getContext("2d");
-        ctx.fillStyle = "#FFB8A2";
+        ctx.fillStyle = "#d32e55";
         ctx.fillRect(this.x, this.y, this.w, this.h);
         
         ctx.fill();
