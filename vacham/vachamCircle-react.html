@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       class Circle {
+           constructor (x, y, radius) {
+               this.x = x;
+               this.y = y;
+               this.radius = radius;
+           }
+       }
+
+       class Rect {
+           constructor(x, y, width, height) {
+               this.x = x;
+               this.y = y;
+               this.w = width;
+               this.h = height;
+           }
+       }
+
+       function checkCollision(cir, rect) {
+           let Ax = cir.x;
+           let Ay = cir.y;
+
+           let rect_left = rect.x;
+           let rect_top = rect.y;
+           let rect_right = rect.x + rect.w;
+           let rect_bottom = rect.y + rect.h;
+
+
+           if(cir.x < rect_left) {
+               Ax = rect_left;
+           }else if(cir.x > rect_right){
+                Ax = rect_right;
+           }
+
+           if(cir.y < rect_top) {
+               Ay = rect_top;
+           }else if(cir.y > rect_bottom){
+                Ay = rect_bottom;
+           }
+
+           let dx = cir.x - Ax;
+           let dy = cir.y - Ay;
+
+           return (dx*dx + dy*dy) <= cir.radius * cir.radius;
+       }
+    </script>
+</body>
+</html>

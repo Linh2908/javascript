@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #game-board {
+            position: relative;
+            margin-top: 50px;
+        }
+
+        .cell {
+            border: solid 1px blue;
+            text-align: center;
+            font-size: 20pt;
+            cursor: pointer;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="start();">START</button>
+    <div id="game-board"></div>
+    <script>
+        const VALUE_EMPTY = 1;
+        const VALUE_X = 2;
+        const VALUE_O = 3;
+        const DEFAUFT_COLS = 10;
+        const DEFAUFT_ROWS = 10;
+        const DEFAUFT_CELL_SIZE = 40;
+
+        class Cell {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.value = VALUE_EMPTY;
+            }
+
+            getHTML() {
+                let top = this.x * DEFAUFT_CELL_SIZE;
+                let left = this.y * DEFAUFT_CELL_SIZE;
+                let cellHTML = `<div id="cell-${this.x}-${this.y}" onclick="play(${this.x},
+                ${this.y}" class="cell" style="position: absolute; width: ${DEFAUFT_CELL_SIZE}px;
+                height:${DEFAUFT_CELL_SIZE}px; left: ${left}px; top:${top}px;
+                line-height:${DEFAUFT_CELL_SIZE}px;"></div>`;
+
+                return cellHTML;
+            }
+
+            draw() {
+                let cellDiv = document.getElementById(`cell-${this.x}-${this.y}`);
+                switch (this.value) {
+                    case VALUE_X: cellDiv.innerHTML = "X"; break;
+                    case VALUE_O: cellDiv.innerHTML = "O"; break;
+                    default: cellDiv.innerHTML = ""; break;
+                }
+            }
+
+        }
+
+        class GameBoard {
+            constructor(rows, cols, elementID) {
+                this.rows = rows;
+                this.cols = cols;
+                this.elementID = elementID;
+                this.turn = VALUE_O;
+                this.cells = [];
+                this.isOver = false;
+            }
+
+            draw() {
+                let gameBoardDiv = document.getElementById(this.elementID);
+
+                gameBoardDiv.innerHTML = "";
+
+                for (let index = 0; index < this.rows; index++) {
+                    let row = [];
+                    this.cells.push(row);
+                    for (let j = 0; j < this.cols; j++) {
+                        let cell = new Cell(index, j);
+                        row.push(cell);
+                        gameBoardDiv.innerHTML += cell.getHTML();
+                    }
+
+                }
+            }
+
+
+            play() {
+                if (this.isOver) {
+                    return;
+                }
+                let cell = this.cells[x][y];
+
+                if (cell.value === VALUE_EMPTY) {
+                    if (cell.value === VALUE_O) {
+                        cell.value = VALUE_X;
+                    } else {
+                        cell.value = VALUE_O;
+                    }
+                } else {
+                    alert("Cell is not empty");
+                }
+
+            }
+
+            check() {
+                let cell = this.cells[x][y];
+                let count = 1;
+                let i = 1;
+
+                while ((y + i) < this.cols && this.cells[x][y + i].value === cell.value) {
+                    count++;
+                    i++;
+                }
+
+                i = 1;
+                while ((y - i) >= 0 && this.cells[x][y - i].value === cell.value) {
+                    count++;
+                    i++;
+                }
+
+                this.endGame(count);
+                // xet chieu doc
+                count = 1;
+                i = 1;
+                while ((x + i) < this.rows && this.cells[x + i][y].value === cell.value) {
+                    count++;
+                    i++;
+                }
+
+                i = 1;
+                while ((x - i) >= 0 && this.cells[x - i][y].value === cell.value) {
+                    count++;
+                    i++;
+                }
+                this.endGame(count);
+                // xet doc dg 
+
+                count = 1;
+                i = 1;
+                let j = 1;
+                while ((x + i) < this.rows && (y + j) < this.cols && this.cells[x + i][y + j].value === cell.value) {
+                    count++;
+                    i++;
+                    j++;
+                }
+
+                while ((x - i) >= 0 && (y - j) >= 0 && this.cells[x - i][y - j].value === cell.value) {
+                    count++;
+                    i++;
+                    j++;
+                }
+                this.endGame(count);
+
+                count = 1;
+                i = 1;
+                j = 1;
+                while ((x + i) < this.rows && (y - j) >= 0 && this.cells[x + i][y - j].value === cell.value) {
+                    count++;
+                    i++;
+                    j++;
+                }
+
+                while ((x - i) >= 0 && (y + j) < this.cols && this.cells[x - i][y + j].value === cell.value) {
+                    count++;
+                    i++;
+                    j++;
+                }
+                this.endGame(count);
+
+            }
+
+
+            endGame(count) {
+                if (count >= 5) {
+                    this.isOver = true;
+                    alert("YOU WON :)");
+                }
+            }
+
+        }
+
+        function play(x, y) {
+            gameBoard.play(x, y);
+        }
+
+        function start() {
+            gameBoard = new GameBoard(DEFAUFT_ROWS, DEFAUFT_COLS, "game-board");
+            gameBoard.draw();
+        }
+        var gameBoard;
+        start();
+
+    </script>
+</body>
+
+</html>

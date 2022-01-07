@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       class Point {
+           constructor(x, y) {
+               this.x = x;
+               this.y = y;
+           }
+       }
+
+       class Circle {
+           constructor(_o, _r) {
+               this.o = _o;
+               this.r = _r;
+           }
+       }
+
+
+       function distance2 (p1, p2) {
+           return Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);
+       }
+
+       function checkCollision(c1, c2) {
+           return Math.pow(c1.r + c2.r, 2) < distance2(c1.o, c2.o);
+       }
+       function main () {
+           let p1 = new Point(2.5, 6.6);
+           let p2 = new Point(3.7, 7.3);
+
+           let c1 = new Circle(p1, 12);
+           let c2 = new Circle(p2, 7);
+
+           if(checkCollision(c1, c2)){
+               console.log("AB");
+           }else{
+               console.log("A B");
+           }
+           return 0;
+       }
+       main();
+   </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class React{
+            constructor(x, y, weight, height) {
+                this.x = x;
+                this.y = y;
+                this.w = weight;
+                this.h = height;
+            }
+
+        }
+
+        function isCollision(react1, react2) {
+            let distX = (react1.x + react1.w/2) - (react2.x + react2.w/2);
+            if(distX < 0) {
+                distX = - distX;
+            }
+
+            const distW = (react1.w + react2.w)/2;
+
+            let distY = (react1.y + react1.h/2) - (react2.y + react2.h/2);
+            if(distY < 0) {
+                distY = -distY;
+            }
+
+            const distH = (react1.h + react2.h)/2;
+            
+            return (distX <= distW && distY <= distH);
+        }
+    </script>
+</body>
+
+</html>
